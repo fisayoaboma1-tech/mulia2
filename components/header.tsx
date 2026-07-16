@@ -10,7 +10,7 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 p-6">
-      <nav className="max-w-7xl mx-auto bg-background/80 backdrop-blur-md border border-border/50 rounded-3xl shadow-lg">
+      <nav className={`max-w-7xl mx-auto bg-background/80 backdrop-blur-md border border-border/50 rounded-3xl shadow-lg transition-all duration-300 ${isOpen ? 'blur-sm' : ''}`}>
         <div className="flex items-center justify-between h-20 px-6 lg:px-8">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
@@ -52,7 +52,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-6 px-6 lg:px-8 border-t border-border/50">
+          <div className="md:hidden py-6 px-6 lg:px-8 border-t border-border/50 backdrop-blur-lg bg-background/95">
             <div className="flex flex-col gap-4">
                <Link
                  href="/"

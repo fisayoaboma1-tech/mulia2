@@ -286,7 +286,7 @@ export default function ProductsPage() {
     <main className="min-h-screen bg-background pt-15">
       <Header />
       <section className="py-24 lg:py-32 bg-muted/30">
-        <div className="max-w-[1600px] mx-auto px-6 lg:px-8">
+        <div className="max-w-[1920px] mx-auto px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 lg:mb-20">
             <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
