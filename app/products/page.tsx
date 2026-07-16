@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
 import { ProductModal } from "@/components/product-modal"
 
@@ -630,6 +630,70 @@ const products: Product[] = [
 
 export default function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [itemsPerPage, setItemsPerPage] = useState(10)
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth
+      if (width < 768) {
+        setItemsPerPage(10)
+      } else if (width < 1024) {
+        setItemsPerPage(12)
+      } else {
+        setItemsPerPage(15)
+      }
+    }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Reset to page 1 when items per page changes
+  useEffect(() => {
+    const maxPage = Math.ceil(products.length / itemsPerPage)
+    if (currentPage > maxPage) {
+      setCurrentPage(maxPage)
+    }
+  }, [itemsPerPage, currentPage])
+
+  const totalPages = Math.ceil(products.length / itemsPerPage)
+  const startIndex = (currentPage - 1) * itemsPerPage
+  const endIndex = startIndex + itemsPerPage
+  const currentProducts = products.slice(startIndex, endIndex)
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  // Get visible page numbers (show 3 at a time)
+  const getVisiblePages = () => {
+    const pages: (number | 'ellipsis')[] = []
+    const start = Math.max(1, currentPage - 1)
+    const end = Math.min(totalPages, currentPage + 1)
+
+    // Adjust to always show 3 pages when possible
+    if (currentPage === 1) {
+      const pagesToShow = Math.min(3, totalPages)
+      for (let i = 1; i <= pagesToShow; i++) {
+        pages.push(i)
+      }
+    } else if (currentPage === totalPages) {
+      const startPage = Math.max(1, totalPages - 2)
+      for (let i = startPage; i <= totalPages; i++) {
+        pages.push(i)
+      }
+    } else {
+      pages.push(currentPage - 1, currentPage, currentPage + 1)
+    }
+
+    return pages
+  }
+
+  const visiblePages = getVisiblePages()
 
   return (
     <main className="min-h-screen bg-background pt-15">
@@ -650,8 +714,8 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
-            {products.map((product) => (
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-8">
+            {currentProducts.map((product) => (
               <div
                 key={product.slug}
                 className="group block bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
@@ -664,22 +728,70 @@ export default function ProductsPage() {
                     alt={product.name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <span className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1.5 rounded-full z-10">
+                  <span className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 rounded-full z-10">
                     {product.tag}
                   </span>
                 </div>
                 {/* Content */}
-                <div className="p-6 lg:p-8">
-                  <h3 className="font-serif text-foreground mb-3 text-3xl font-normal">{product.name}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{product.description}</p>
-                  <span className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium group/btn">
+                <div className="p-3 sm:p-4 lg:p-8">
+                  <h3 className="font-serif text-foreground mb-1 sm:mb-2 lg:mb-3 text-sm sm:text-base lg:text-3xl font-normal leading-tight">{product.name}</h3>
+                  <p className="text-muted-foreground leading-snug mb-2 sm:mb-3 lg:mb-6 text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">{product.description}</p>
+                  <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
                     Discover
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-12 lg:mt-16">
+              {/* Previous Button */}
+              <button
+                onClick={() => goToPage(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
+                  currentPage === 1
+                    ? 'text-muted-foreground/30 cursor-not-allowed'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                }`}
+                aria-label="Previous page"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Page Numbers */}
+              {visiblePages.map((page) => (
+                <button
+                  key={page}
+                  onClick={() => goToPage(page as number)}
+                  className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm font-medium transition-all duration-300 ${
+                    currentPage === page
+                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              {/* Next Button */}
+              <button
+                onClick={() => goToPage(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
+                  currentPage === totalPages
+                    ? 'text-muted-foreground/30 cursor-not-allowed'
+                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                }`}
+                aria-label="Next page"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+            </div>
+          )}
         </div>
       </section>
       <Footer />
