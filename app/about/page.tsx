@@ -45,6 +45,51 @@ export default function AboutPage() {
                     We pride ourselves on our sustainable sourcing practices, supporting local farming communities while delivering exceptional value to our international partners. Our commitment to excellence has made us a trusted name in agricultural trading across Asia, Europe, and beyond.
                   </p>
                 </div>
+
+                {/* Our Story */}
+                <div className="mt-12 pt-12 border-t border-background/20">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-background mb-6">Our Story</h3>
+                  <div className="space-y-4 text-background/90 leading-relaxed">
+                    <p>
+                      Founded in 2003, PT Kanematsu Trading began as a small trading firm with a vision to connect Indonesian agricultural producers with global markets. What started as a modest operation has grown into a leading agricultural commodity trading company, serving clients across 25+ countries.
+                    </p>
+                    <p>
+                      Our journey has been defined by perseverance, integrity, and an unwavering commitment to quality. From our humble beginnings in Jakarta, we have expanded our operations to include multiple processing facilities, quality control laboratories, and strategic partnerships with over 50 farms across Indonesia.
+                    </p>
+                    <p>
+                      Today, we handle over 500,000 tons of agricultural commodities annually, ranging from grains and spices to coffee, cocoa, and tropical fruits. Our success is built on the trust of our partners and the satisfaction of our clients, who rely on us for consistent quality and reliable delivery.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Our Mission */}
+                <div className="mt-12 pt-12 border-t border-background/20">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-background mb-6">Our Mission</h3>
+                  <div className="space-y-4 text-background/90 leading-relaxed">
+                    <p>
+                      To empower Indonesian agricultural producers by providing them with access to international markets while delivering exceptional value to our global clients. We strive to be the most trusted partner in agricultural commodity trading, known for our quality, reliability, and ethical business practices.
+                    </p>
+                    <p>
+                      We are committed to sustainable development, ensuring that our operations benefit local communities, protect the environment, and contribute to the long-term growth of Indonesia's agricultural sector. Our mission extends beyond business—we aim to make a positive impact on the lives of farmers and the communities we serve.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Where We're Going */}
+                <div className="mt-12 pt-12 border-t border-background/20">
+                  <h3 className="font-serif text-2xl md:text-3xl font-medium text-background mb-6">Where We're Going</h3>
+                  <div className="space-y-4 text-background/90 leading-relaxed">
+                    <p>
+                      As we look to the future, PT Kanematsu Trading is focused on expanding our global footprint while deepening our roots in Indonesia. We are investing in technology, infrastructure, and talent to enhance our capabilities and better serve our clients.
+                    </p>
+                    <p>
+                      Our vision includes becoming the leading agricultural commodity trading platform in Southeast Asia, leveraging digital solutions to streamline supply chains, improve transparency, and create greater value for all stakeholders. We are exploring new markets, diversifying our product portfolio, and building strategic partnerships to drive growth.
+                    </p>
+                    <p>
+                      Sustainability remains at the core of our strategy. We are committed to achieving carbon-neutral operations by 2030, implementing circular economy principles, and supporting climate-smart agriculture practices among our partner farms. Together with our clients and partners, we are shaping the future of agricultural trade—one that is profitable, sustainable, and beneficial for all.
+                    </p>
+                  </div>
+                </div>
                 <div className="mt-10">
                   <Button
                     size="lg"
