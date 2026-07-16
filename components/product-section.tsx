@@ -7,22 +7,22 @@ import { ScrollBlurText } from "@/components/scroll-blur-text"
 
 const products = [
   {
-    name: "Equilibrium",
-    description: "Rebalancing the gut microbiome for optimal digestion and daily well-being.",
+    name: "Premium Grains",
+    description: "High-quality rice, corn, and wheat sourced directly from trusted Indonesian farms for domestic and international buyers.",
     image: "/images/product-equilibrium.png",
-    tag: "Digestive",
+    tag: "Grains",
   },
   {
-    name: "Serenity",
-    description: "Supporting the gut-brain axis for better stress management and restorative sleep.",
+    name: "Spices & Herbs",
+    description: "Premium-grade spices including pepper, nutmeg, cinnamon, and vanilla, processed and packaged for global export.",
     image: "/images/product-serenity.png",
-    tag: "Stress & Sleep",
+    tag: "Spices",
   },
   {
-    name: "Vitality",
-    description: "Strengthening natural defenses and optimizing daily energy.",
+    name: "Coffee & Cocoa",
+    description: "Specialty coffee beans and premium cocoa sourced from sustainable plantations with strict quality control.",
     image: "/images/product-vitality.png",
-    tag: "Immunity",
+    tag: "Beverage Crops",
   },
 ]
 
@@ -53,14 +53,14 @@ export function ProductSection() {
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <p className="reveal opacity-0 text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
-            Our Solutions
+            Our Products
           </p>
           <ScrollBlurText
-            text="Formulas designed for you"
+            text="Premium agricultural commodities"
             className="font-serif text-3xl text-foreground text-balance mb-6 md:text-7xl font-light"
           />
           <p className="reveal opacity-0 animation-delay-400 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Each product is the result of extensive research, combining scientific expertise with respect for nature.
+            Each product is carefully sourced, processed, and quality-checked to meet the highest international standards for global trade.
           </p>
         </div>
 
@@ -68,7 +68,7 @@ export function ProductSection() {
           {products.map((product, index) => (
             <div
               key={product.name}
-              className={`reveal opacity-0 ${index === 1 ? "animation-delay-200" : index === 2 ? "animation-delay-400" : ""} group min-w-[85vw] md:min-w-[70vw] lg:min-w-0 snap-center`}
+              className={`reveal opacity-0 ${index === 1 ? "animation-delay-200" : index === 2 ? "animation-delay-400" : ""} group min-w-[65vw] md:min-w-[70vw] lg:min-w-0 snap-center`}
             >
               <div className="bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
                 {/* Image */}

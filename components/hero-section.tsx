@@ -35,22 +35,21 @@ export function HeroSection() {
       const scrollY = window.scrollY
       const sectionHeight = sectionRef.current.offsetHeight
 
-      // Calculate progress (0 to 1) based on scroll within the hero section
       const progress = Math.min(scrollY / (sectionHeight * 0.5), 1)
       setScrollProgress(progress)
     }
 
     window.addEventListener("scroll", handleScroll, { passive: true })
-    handleScroll() // Initial check
+    handleScroll()
 
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const scale = 1 - scrollProgress * 0.05 // Reduces from 1 to 0.95
-  const borderRadius = scrollProgress * 24 // Increases from 0 to 24px
+  const scale = 1 - scrollProgress * 0.05
+  const borderRadius = scrollProgress * 24
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center overflow-hidden pt-20">
+    <section ref={sectionRef} className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden pt-16 md:pt-20">
       {/* Full-width background image with zoom effect */}
       <div
         ref={imageContainerRef}
@@ -62,48 +61,48 @@ export function HeroSection() {
       >
         <img
           src="/images/hero-biometic.png"
-          alt="Biometic in a natural environment"
+          alt="Agricultural landscape"
           className="w-full h-full object-cover animate-zoom-in"
         />
-        {/* Subtle dark overlay for text readability */}
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/40 to-transparent" />
       </div>
 
       {/* Content overlay - text on the left */}
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-32 w-full">
-        <div className="max-w-2xl">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-32 w-full">
+        <div className="max-w-md sm:max-w-xl lg:max-w-2xl">
           {/* Text content */}
-          <p className="reveal opacity-0 text-sm uppercase tracking-[0.2em] text-background font-medium mb-6">
-            Microbiome Science
+          <p className="reveal opacity-0 mt-10 text-[10px] sm:text-xs md:text-sm lg:text-base uppercase tracking-[0.15em] sm:tracking-[0.2em] text-background font-medium mb-3 sm:mb-4 md:mb-6">
+            Agricultural Trading & Supply
           </p>
-          <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-medium leading-[1.1] text-background text-balance mb-8">
-            <AnimatedText text="Reveal your" delay={0.2} />
+          <h1 className="font-serif mt-17 mb-2 font-medium leading-[1.15] text-background mb-4 sm:mb-6 md:mb-8">
+            <span className="whitespace-nowrap">
+              <AnimatedText text="Connecting trusted" delay={0.2} />
+            </span>
             <br />
             <span className="text-accent">
-              <AnimatedText text="natural balance" delay={0.6} />
+              <AnimatedText text="agricultural producers" delay={0.6} />
             </span>
           </h1>
-          <p className="reveal opacity-0 animation-delay-400 text-lg text-background/90 leading-relaxed mb-10 md:text-base mr-0 pr-0">
-            A scientific and caring approach to restore your microbiome harmony. Discover research-based solutions.
+          <p className="reveal opacity-0 animation-delay-400 text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl text-background/90 leading-relaxed mb-6 sm:mb-8 md:mb-10 mr-0 pr-0">
+            Sourcing, processing, quality assurance, and global distribution of premium agricultural commodities for international markets including premium grains, oilseeds, pulses, high-grade cocoa, coffee, and cashew nuts, delivered directly from farm to port.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row mt-20 gap-3 sm:gap-4">
             <Button
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base group"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 sm:px-8 md:px-10 py-4 sm:py-6 md:py-7 text-sm sm:text-base md:text-lg group w-full sm:w-auto"
             >
-              Start your journey
+              Explore our products
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button
               size="lg"
               variant="outline"
-              className="rounded-full px-8 py-6 text-base border-background/30 hover:bg-background/10 text-background bg-transparent backdrop-blur-sm"
+              className="rounded-full px-5 sm:px-8 md:px-10 py-4 sm:py-6 md:py-7 text-sm sm:text-base md:text-lg border-background/30 hover:bg-background/10 text-background bg-transparent backdrop-blur-sm w-full sm:w-auto"
             >
               Learn more
             </Button>
           </div>
         </div>
-
         {/* Floating card - bottom left */}
       </div>
     </section>
