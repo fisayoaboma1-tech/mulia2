@@ -32,12 +32,15 @@ export function Header() {
              <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                About Us
              </Link>
+             <Link href="/contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               Contact
+             </Link>
            </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
-              Contact Us
+            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-6">
+              <Link href="/contact">Contact Us</Link>
             </Button>
           </div>
 
@@ -79,8 +82,15 @@ export function Header() {
                >
                  About Us
                </Link>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full w-full mt-4">
-                Contact Us
+               <Link
+                 href="/contact"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Contact
+               </Link>
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full w-full mt-4">
+                <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
           </div>
