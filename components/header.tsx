@@ -18,21 +18,21 @@ export function Header() {
             <span className="font-serif text-foreground text-lg md:text-2xl font-normal">PT Kanematsu Trading</span>
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
-            <Link href="#produits" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Products
-            </Link>
-            <Link href="#science" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Process
-            </Link>
-            <Link href="#temoignages" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Testimonials
-            </Link>
-            <Link href="#mission" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              About Us
-            </Link>
-          </div>
+           {/* Desktop Navigation */}
+           <div className="hidden md:flex items-center gap-10">
+             <Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               Products
+             </Link>
+             <Link href="/process" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               Process
+             </Link>
+             <Link href="/testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               Testimonials
+             </Link>
+             <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               About Us
+             </Link>
+           </div>
 
           {/* CTA Button */}
           <div className="hidden md:block">
@@ -51,34 +51,34 @@ export function Header() {
         {isOpen && (
           <div className="md:hidden py-6 px-6 lg:px-8 border-t border-border/50">
             <div className="flex flex-col gap-4">
-              <Link
-                href="#produits"
-                className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Products
-              </Link>
-              <Link
-                href="#science"
-                className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Process
-              </Link>
-              <Link
-                href="#temoignages"
-                className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Testimonials
-              </Link>
-              <Link
-                href="#mission"
-                className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                About Us
-              </Link>
+               <Link
+                 href="/products"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Products
+               </Link>
+               <Link
+                 href="/process"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Process
+               </Link>
+               <Link
+                 href="/testimonials"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Testimonials
+               </Link>
+               <Link
+                 href="/about"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 About Us
+               </Link>
               <Button className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full w-full mt-4">
                 Contact Us
               </Button>
