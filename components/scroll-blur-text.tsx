@@ -9,51 +9,46 @@ interface ScrollBlurTextProps {
   endBlur?: number
 }
 
-export function ScrollBlurText({ text, className = "", startBlur = 80, endBlur = 0 }: ScrollBlurTextProps) {
+export function ScrollBlurText({ text, className = "", startBlur = 0, endBlur = 0 }: ScrollBlurTextProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const [wordProgress, setWordProgress] = useState<number[]>([])
+  const [isVisible, setIsVisible] = useState(false)
 
   const words = text.split(" ")
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (!containerRef.current) return
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+          }
+        })
+      },
+      { threshold: 0.1 },
+    )
 
-      const rect = containerRef.current.getBoundingClientRect()
-      const windowHeight = window.innerHeight
-
-      // Calculate when element enters viewport (bottom) to when it reaches center
-      const scrollProgress = Math.max(0, Math.min(1, (windowHeight - rect.top) / (windowHeight * 0.6)))
-
-      const newProgress = words.map((_, index) => {
-        const wordDelay = index * 0.2 // Stagger delay per word (increased from 0.15)
-        const wordProgress = Math.max(0, Math.min(1, (scrollProgress - wordDelay) / 0.3))
-        return wordProgress
-      })
-
-      setWordProgress(newProgress)
+    if (containerRef.current) {
+      observer.observe(containerRef.current)
     }
 
-    handleScroll() // Initial check
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [words.length])
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <h2 ref={containerRef} className={className}>
       {words.map((word, index) => {
-        const progress = wordProgress[index] || 0
-        const blur = startBlur - (startBlur - endBlur) * progress
-        const opacity = progress
+        const delay = index * 0.1
+        const opacity = isVisible ? 1 : 0
+        const transform = isVisible ? "translateY(0)" : "translateY(20px)"
 
         return (
           <span
             key={index}
             style={{
-              filter: `blur(${blur}px)`,
               opacity,
+              transform,
               display: "inline-block",
-              transition: "filter 0.3s ease-out, opacity 0.3s ease-out",
+              transition: `opacity 0.5s ease-out ${delay}s, transform 0.5s ease-out ${delay}s`,
             }}
           >
             {word}

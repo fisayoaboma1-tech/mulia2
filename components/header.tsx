@@ -20,6 +20,9 @@ export function Header() {
 
            {/* Desktop Navigation */}
            <div className="hidden md:flex items-center gap-10">
+             <Link href="/" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+               Home
+             </Link>
              <Link href="/products" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                Products
              </Link>
@@ -51,6 +54,13 @@ export function Header() {
         {isOpen && (
           <div className="md:hidden py-6 px-6 lg:px-8 border-t border-border/50">
             <div className="flex flex-col gap-4">
+               <Link
+                 href="/"
+                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
+                 onClick={() => setIsOpen(false)}
+               >
+                 Home
+               </Link>
                <Link
                  href="/products"
                  className="text-lg text-muted-foreground hover:text-foreground transition-colors"
