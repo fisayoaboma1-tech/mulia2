@@ -247,7 +247,7 @@ export default function ProductsPage() {
     <main className="min-h-screen bg-background">
       <Header />
       <section className="py-24 lg:py-32 bg-muted/30">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 lg:mb-20">
             <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
@@ -262,7 +262,7 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
             {products.map((product) => (
               <div key={product.name} className="group bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
                 {/* Image */}
