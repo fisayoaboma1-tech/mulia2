@@ -26,9 +26,6 @@ export function Header() {
              <Link href="/process" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                Process
              </Link>
-             <Link href="/testimonials" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-               Testimonials
-             </Link>
              <Link href="/about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                About Us
              </Link>
@@ -64,13 +61,6 @@ export function Header() {
                  onClick={() => setIsOpen(false)}
                >
                  Process
-               </Link>
-               <Link
-                 href="/testimonials"
-                 className="text-lg text-muted-foreground hover:text-foreground transition-colors"
-                 onClick={() => setIsOpen(false)}
-               >
-                 Testimonials
                </Link>
                <Link
                  href="/about"
