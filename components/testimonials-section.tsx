@@ -1,6 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import { ScrollBlurText } from "./scroll-blur-text"
 
 const testimonials = [
@@ -35,6 +38,24 @@ const testimonials = [
     quote: "We've partnered with PT Kanematsu Trading for our coffee bean imports. Their sourcing expertise and product quality consistently exceed expectations.",
     author: "Mr. James R.",
     role: "Coffee Roaster, USA",
+    avatar: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    quote: "Outstanding service and product quality. PT Kanematsu Trading has become an integral part of our supply chain strategy.",
+    author: "Ms. Anna K.",
+    role: "Supply Chain Director, Netherlands",
+    avatar: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    quote: "The team's deep knowledge of Indonesian agricultural products and their commitment to quality is truly impressive.",
+    author: "Mr. David L.",
+    role: "Import Manager, Australia",
+    avatar: "/placeholder.svg?height=80&width=80",
+  },
+  {
+    quote: "Reliable, professional, and always delivering on promises. PT Kanematsu Trading is our go-to partner for agricultural commodities.",
+    author: "Mrs. Emily C.",
+    role: "Purchasing Head, Canada",
     avatar: "/placeholder.svg?height=80&width=80",
   },
 ]
@@ -140,6 +161,20 @@ export function TestimonialsSection() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* See More Button */}
+        <div className="text-center mt-12 lg:mt-16">
+          <Button
+            size="lg"
+            asChild
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base group"
+          >
+            <Link href="/testimonials">
+              See all testimonials
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

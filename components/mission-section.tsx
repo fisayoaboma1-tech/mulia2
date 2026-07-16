@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export function MissionSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -64,10 +65,13 @@ export function MissionSection() {
               <div className="reveal opacity-0 animation-delay-600 mt-10">
                 <Button
                   size="lg"
+                  asChild
                   className="bg-background text-foreground hover:bg-background/90 rounded-full px-8 group"
                 >
-                  Discover our story
-                  <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <Link href="/about">
+                    Discover our story
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </div>
             </div>

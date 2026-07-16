@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
 
 const products = [
@@ -23,6 +24,24 @@ const products = [
     description: "Specialty coffee beans and premium cocoa sourced from sustainable plantations with strict quality control.",
     image: "/images/product-vitality.png",
     tag: "Beverage Crops",
+  },
+  {
+    name: "Palm Oil",
+    description: "Refined and crude palm oil sourced from sustainable plantations, meeting international food industry standards.",
+    image: "/images/product-equilibrium.png",
+    tag: "Oils",
+  },
+  {
+    name: "Rubber",
+    description: "Natural rubber products including SIR20 and SIR3CV grades, processed to meet global manufacturing specifications.",
+    image: "/images/product-serenity.png",
+    tag: "Industrial",
+  },
+  {
+    name: "Cashew Nuts",
+    description: "Premium cashew nuts sourced from Indonesian plantations, available in various grades for food processing and retail.",
+    image: "/images/product-vitality.png",
+    tag: "Nuts",
   },
 ]
 
@@ -98,6 +117,20 @@ export function ProductSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* See More Button */}
+        <div className="reveal opacity-0 animation-delay-600 text-center mt-12 lg:mt-16">
+          <Button
+            size="lg"
+            asChild
+            className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-8 py-6 text-base group"
+          >
+            <Link href="/products">
+              See all products
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

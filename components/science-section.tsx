@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from "react"
 import { FlaskConical, Leaf, Shield, Users } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { ArrowRight } from "lucide-react"
+import Link from "next/link"
 import { ScrollBlurText } from "./scroll-blur-text"
 
 const stats = [
@@ -134,6 +137,20 @@ export function ScienceSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Learn More Button */}
+        <div className="text-center mt-12 lg:mt-16">
+          <Button
+            size="lg"
+            asChild
+            className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 rounded-full px-8 py-6 text-base group"
+          >
+            <Link href="/process">
+              Learn more about our process
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
