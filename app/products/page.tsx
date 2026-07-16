@@ -1,6 +1,5 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
@@ -303,7 +302,7 @@ export default function ProductsPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 lg:gap-8">
             {products.map((product) => (
-              <div key={product.name} className="group bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
+              <Link key={product.name} href={`/products/${product.slug}`} className="group block bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer">
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-muted z-10">
                   <img
@@ -319,18 +318,12 @@ export default function ProductsPage() {
                 <div className="p-6 lg:p-8">
                   <h3 className="font-serif text-foreground mb-3 text-3xl font-normal">{product.name}</h3>
                   <p className="text-muted-foreground leading-relaxed mb-6">{product.description}</p>
-                  <Button
-                    variant="ghost"
-                    asChild
-                    className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto group/btn"
-                  >
-                    <Link href={`/products/${product.slug || product.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}>
-                      Discover
-                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
+                  <span className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium group/btn">
+                    Discover
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
