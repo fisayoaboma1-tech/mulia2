@@ -5,28 +5,28 @@ import { FlaskConical, Leaf, Shield, Users } from "lucide-react"
 import { ScrollBlurText } from "./scroll-blur-text"
 
 const stats = [
-  { icon: FlaskConical, value: "15+", label: "Years of research" },
-  { icon: Leaf, value: "100%", label: "Natural ingredients" },
-  { icon: Shield, value: "47", label: "Clinical studies" },
-  { icon: Users, value: "250K+", label: "People supported" },
+  { icon: FlaskConical, value: "50+", label: "Partner farms" },
+  { icon: Leaf, value: "100%", label: "Quality assured" },
+  { icon: Shield, value: "25+", label: "Export countries" },
+  { icon: Users, value: "500K+", label: "Tons delivered" },
 ]
 
 const principles = [
   {
     number: "01",
-    title: "Fundamental research",
+    title: "Sourcing & Procurement",
     description:
-      "Our formulas are developed in collaboration with renowned research laboratories, ensuring a solid scientific foundation.",
+      "We partner directly with trusted Indonesian farms and cooperatives to source premium agricultural commodities at their peak quality.",
   },
   {
     number: "02",
-    title: "Rigorous selection",
-    description: "Each ingredient is carefully selected for its purity, effectiveness, and sustainable origin.",
+    title: "Quality Assurance",
+    description: "Each shipment undergoes rigorous inspection and testing to ensure it meets international standards for purity, grading, and safety.",
   },
   {
     number: "03",
-    title: "Clinical validation",
-    description: "Our products undergo clinical studies to demonstrate their effectiveness and safety.",
+    title: "Global Distribution",
+    description: "Our efficient supply chain and logistics network ensure timely delivery of agricultural commodities to buyers worldwide.",
   },
 ]
 
@@ -92,15 +92,14 @@ export function ScienceSection() {
         {/* Section Header */}
         <div className="text-center mb-16 lg:mb-20">
           <p className="reveal opacity-0 text-sm uppercase tracking-[0.2em] text-primary-foreground/70 font-medium mb-4">
-            Our Approach
+            Our Trading Process
           </p>
           <ScrollBlurText
-            text="Science in service of life"
+            text="From farm to global market"
             className="font-serif text-3xl md:text-4xl text-primary-foreground text-balance mb-6 lg:text-7xl font-light"
           />
           <p className="reveal opacity-0 animation-delay-400 text-lg text-primary-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            We believe in caring science that respects natural balances while providing concrete and effective
-            solutions.
+            We uphold the highest standards in agricultural commodity trading, ensuring quality and reliability at every stage of the supply chain.
           </p>
         </div>
 

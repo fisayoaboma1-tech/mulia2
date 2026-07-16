@@ -6,35 +6,35 @@ import { ScrollBlurText } from "./scroll-blur-text"
 const testimonials = [
   {
     quote:
-      "After years of digestive problems, Equilibrium has truly changed my daily life. I finally feel light and full of energy.",
-    author: "Marie L.",
-    role: "User for 8 months",
+      "PT Kanematsu Trading has been our most reliable grain supplier for over three years. Their quality control and on-time delivery are unmatched.",
+    author: "Mr. Hiroshi T.",
+    role: "Procurement Manager, Japan",
     avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     quote:
-      "Biometic's scientific approach immediately appealed to me. The results are there: better sleep, less stress, more mental clarity.",
-    author: "Thomas D.",
-    role: "User for 1 year",
+      "The consistency and quality of their spice exports have helped us grow our business significantly. A trusted partner in every sense.",
+    author: "Mrs. Sarah W.",
+    role: "Import Director, UK",
     avatar: "/placeholder.svg?height=80&width=80",
   },
   {
     quote:
-      "As a doctor, I appreciate the scientific rigor behind each formula. I recommend Biometic to my patients with complete confidence.",
-    author: "Dr. Sophie M.",
-    role: "General practitioner",
+      "As a food manufacturer, I rely on PT Kanematsu Trading for premium agricultural raw materials. Their rigorous quality assurance gives us complete confidence.",
+    author: "Mr. Andreas K.",
+    role: "Production Manager, Germany",
     avatar: "/placeholder.svg?height=80&width=80",
   },
   {
-    quote: "A true revolution for my gut health. Biometic probiotics have transformed my daily well-being.",
-    author: "Lucas P.",
-    role: "User for 6 months",
+    quote: "Their supply chain management is exceptional. From farm to port, every step is handled with professionalism and transparency.",
+    author: "Ms. Li M.",
+    role: "Commodity Trader, Singapore",
     avatar: "/placeholder.svg?height=80&width=80",
   },
   {
-    quote: "Biometic helped me regain restorative sleep. I finally wake up rested and full of energy.",
-    author: "Claire B.",
-    role: "User for 10 months",
+    quote: "We've partnered with PT Kanematsu Trading for our coffee bean imports. Their sourcing expertise and product quality consistently exceed expectations.",
+    author: "Mr. James R.",
+    role: "Coffee Roaster, USA",
     avatar: "/placeholder.svg?height=80&width=80",
   },
 ]
@@ -110,7 +110,7 @@ export function TestimonialsSection() {
             Testimonials
           </p>
           <ScrollBlurText
-            text="They found their balance"
+            text="Trusted by global partners"
             className="font-serif text-3xl md:text-4xl text-foreground text-balance lg:text-7xl font-light"
           />
         </div>

@@ -15,9 +15,9 @@ const fraunces = Fraunces({
 })
 
 export const metadata: Metadata = {
-  title: "Biometic — Science du Microbiome",
+  title: "PT Kanematsu Trading — Agricultural Trading & Supply",
   description:
-    "Découvrez une approche scientifique et naturelle pour votre bien-être. Biometic fusionne science rigoureuse et nature vivante.",
+    "PT Kanematsu Trading is an Indonesian B2B agricultural trading company specializing in sourcing, processing, quality assurance, packaging, and global distribution of agricultural commodities.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -44,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr">
+    <html lang="en">
       <body className={`${dmSans.variable} ${fraunces.variable} font-sans antialiased`}>
         {children}
         <Analytics />
