@@ -244,7 +244,7 @@ const products = [
 
 export default function ProductsPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-15">
       <Header />
       <section className="py-24 lg:py-32 bg-muted/30">
         <div className="max-w-[1600px] mx-auto px-6 lg:px-8">

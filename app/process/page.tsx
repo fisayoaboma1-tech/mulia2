@@ -52,7 +52,7 @@ const principles = [
 
 export default function ProcessPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-15">
       <Header />
       <section className="py-24 lg:py-32 bg-primary text-primary-foreground">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

@@ -7,7 +7,7 @@ import { ScrollBlurText } from "@/components/scroll-blur-text"
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-15">
       <Header />
       
       {/* Hero Section */}

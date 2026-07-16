@@ -5,7 +5,7 @@ import { ScrollBlurText } from "@/components/scroll-blur-text"
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-background pt-15">
       <Header />
       <section className="py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
