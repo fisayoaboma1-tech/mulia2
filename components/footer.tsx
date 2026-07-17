@@ -39,9 +39,12 @@ export function Footer() {
                 <Mail className="w-4 h-4" />
                 <span>info@kanematsu-trading.com</span>
               </div>
-              <div className="flex items-center gap-3">
-                <Phone className="w-4 h-4" />
-                <span>+62 21 1234 5678</span>
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 mt-0.5 shrink-0" />
+                <div className="flex flex-col">
+                  <span>+62-031 8521230</span>
+                  <span>+62 816-868-92024</span>
+                </div>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-4 h-4" />
