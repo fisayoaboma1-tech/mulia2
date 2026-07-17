@@ -739,7 +739,7 @@ export default function ProductsPage() {
                   setSearchQuery(e.target.value)
                   setCurrentPage(1)
                 }}
-                className="w-full pl-12 pr-12 py-3.5 sm:py-4 bg-background border border-border/50 rounded-2xl text-sm sm:text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-300 shadow-sm shadow-primary/5"
+                className="w-full pl-12 pr-12 py-3.5 sm:py-4 bg-background border border-border/50 rounded-2xl text-base sm:text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-300 shadow-sm shadow-primary/5"
               />
               {searchQuery && (
                 <button
