@@ -12,7 +12,7 @@ const products = [
     slug: "premium-grains",
     name: "Premium Rice",
     description: "High-quality aromatic and non-aromatic rice varieties including Basmati, Jasmine, and IR64, sourced from fertile Indonesian paddies.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298229/premium_grains_cv4wqy.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298229/premium_grains_cv4wqy.jpg",
     tag: "Grains",
   },
   {

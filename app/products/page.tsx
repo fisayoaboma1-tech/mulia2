@@ -5,7 +5,21 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
-import { ProductModal } from "@/components/product-modal"
+import dynamic from "next/dynamic"
+
+const ProductModal = dynamic(() => import("@/components/product-modal").then((mod) => mod.ProductModal), { ssr: false }) as React.ComponentType<{
+  product: {
+    slug: string
+    name: string
+    description: string
+    image: string
+    tag: string
+    details: string
+    specifications: { [key: string]: string }
+  } | null
+  isOpen: boolean
+  onClose: () => void
+}>
 
 interface Product {
   slug: string
@@ -24,7 +38,7 @@ const products: Product[] = [
     slug: "premium-rice",
     name: "Premium Rice",
     description: "High-quality aromatic and non-aromatic rice varieties including Basmati, Jasmine, and IR64, sourced from fertile Indonesian paddies.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298229/premium_grains_cv4wqy.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298229/premium_grains_cv4wqy.jpg",
     tag: "Grains",
     details: "Our premium rice selection includes some of the finest varieties grown in Indonesia's fertile paddies. From the aromatic Basmati to the fragrant Jasmine rice and the versatile IR64, we ensure each grain meets international quality standards. Our rice is carefully harvested, processed, and packaged to preserve its natural aroma, texture, and nutritional value.",
     specifications: {
@@ -39,7 +53,7 @@ const products: Product[] = [
     slug: "yellow-corn",
     name: "Yellow Corn",
     description: "Premium yellow corn suitable for animal feed and industrial processing, meeting international quality standards.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298228/yellowcorrn_mdgjmk.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298228/yellowcorrn_mdgjmk.jpg",
     tag: "Grains",
     details: "Our yellow corn is sourced from trusted farms across Indonesia, ensuring consistent quality and nutritional value. Perfect for animal feed, industrial processing, and food manufacturing, our corn meets stringent international standards for moisture content, purity, and grading.",
     specifications: {
@@ -54,7 +68,7 @@ const products: Product[] = [
     slug: "wheat",
     name: "Wheat",
     description: "High-protein wheat varieties sourced from optimal growing regions, ideal for bread-making and pasta production.",
-    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784298231/wheat_c2dqfz.mp4",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784298231/wheat_c2dqfz.mp4",
     tag: "Grains",
     details: "Our wheat selection focuses on high-protein varieties perfect for bread-making, pasta production, and other food processing applications. Sourced from optimal growing regions, our wheat delivers excellent gluten content and consistent quality.",
     specifications: {
@@ -69,7 +83,7 @@ const products: Product[] = [
     slug: "black-pepper",
     name: "Black Pepper",
     description: "Premium Indonesian black pepper with bold flavor profile, carefully harvested and processed for global spice markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298226/blackpepper_wj7rbq.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298226/blackpepper_wj7rbq.jpg",
     tag: "Spices",
     details: "Indonesia is world-renowned for its black pepper, and we offer only the finest grades. Our black pepper is carefully harvested, sun-dried, and processed to preserve its bold flavor and aromatic qualities. Available in various mesh sizes to meet diverse culinary and industrial needs.",
     specifications: {
@@ -84,7 +98,7 @@ const products: Product[] = [
     slug: "nutmeg",
     name: "Nutmeg",
     description: "Aromatic nutmeg from the Spice Islands, available in whole, ground, and essential oil forms for culinary and pharmaceutical use.",
-    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784298227/nutmeg_rth2iy.mp4",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784298227/nutmeg_rth2iy.mp4",
     tag: "Spices",
     details: "Sourced from the historic Spice Islands of Indonesia, our nutmeg offers exceptional aroma and flavor. Available in whole nuts, ground powder, and essential oil forms, it serves both culinary and pharmaceutical applications worldwide.",
     specifications: {
@@ -99,7 +113,7 @@ const products: Product[] = [
     slug: "cinnamon",
     name: "Cinnamon",
     description: "High-quality Ceylon cinnamon sticks and powder, known for superior aroma and flavor in international markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298228/cinamon_mpwsoi.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298228/cinamon_mpwsoi.jpg",
     tag: "Spices",
     details: "Our Ceylon cinnamon, also known as 'true cinnamon,' is sourced from Indonesian farms and processed to preserve its delicate flavor and aromatic properties. Available as whole sticks or fine powder, it's prized by chefs and food manufacturers worldwide.",
     specifications: {
@@ -114,7 +128,7 @@ const products: Product[] = [
     slug: "cloves",
     name: "Cloves",
     description: "Premium cloves from North Sulawesi, hand-selected for size, color, and oil content for spice traders worldwide.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298227/cloves_g6swjt.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298227/cloves_g6swjt.jpg",
     tag: "Spices",
     details: "Our cloves are sourced from the fertile soils of North Sulawesi, where the ideal climate produces cloves with exceptional oil content and aroma. Each clove is hand-selected to ensure only the best quality reaches our clients.",
     specifications: {
@@ -129,7 +143,7 @@ const products: Product[] = [
     slug: "vanilla-beans",
     name: "Vanilla Beans",
     description: "Grade A Indonesian vanilla beans with high vanillin content, carefully cured for premium food and fragrance applications.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298227/vanillabeans_o0mjab.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784298227/vanillabeans_o0mjab.jpg",
     tag: "Spices",
     details: "Our Grade A vanilla beans are carefully cultivated and cured to achieve high vanillin content and superior flavor. Sourced from sustainable farms in Indonesia, these beans are perfect for premium food products, fragrances, and gourmet applications.",
     specifications: {
@@ -145,7 +159,7 @@ const products: Product[] = [
     slug: "arabica-coffee",
     name: "Arabica Coffee",
     description: "Premium Arabica coffee beans from highland plantations, offering complex flavor profiles for specialty coffee roasters.",
-    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784298348/arabiccofee_a6eanr.mp4",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784298348/arabiccofee_a6eanr.mp4",
     tag: "Beverage Crops",
     details: "Our Arabica coffee beans are grown in the highland regions of Indonesia, where the cool climate and rich volcanic soil produce beans with exceptional flavor complexity. Sourced from sustainable plantations, our Arabica offers notes of chocolate, fruit, and caramel that specialty coffee roasters prize.",
     specifications: {
@@ -161,7 +175,7 @@ const products: Product[] = [
     slug: "robusta-coffee",
     name: "Robusta Coffee",
     description: "High-quality Robusta coffee beans with strong body and bold flavor, perfect for espresso blends and instant coffee production.",
-    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784298262/rubustacofee_ysfney.mp4",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784298262/rubustacofee_ysfney.mp4",
     tag: "Beverage Crops",
     details: "Our Robusta coffee beans are known for their strong body, bold flavor, and high caffeine content. Grown in the lowland regions of Indonesia, these beans are ideal for espresso blends, instant coffee, and as a flavor enhancer in coffee mixes.",
     specifications: {
@@ -177,7 +191,7 @@ const products: Product[] = [
     slug: "cocoa-beans",
     name: "Cocoa Beans",
     description: "Fine flavor cocoa beans from Sulawesi and Sumatra, fermented and dried to international standards for chocolate manufacturers.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300707/cocoabeans_pfr3do.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300707/cocoabeans_pfr3do.jpg",
     tag: "Beverage Crops",
     details: "Our fine flavor cocoa beans from Sulawesi and Sumatra are carefully fermented and dried to bring out exceptional flavor profiles. Known for their fruity and floral notes, these beans are highly sought after by premium chocolate manufacturers worldwide.",
     specifications: {
@@ -193,7 +207,7 @@ const products: Product[] = [
     slug: "crude-palm-oil",
     name: "Crude Palm Oil",
     description: "Premium crude palm oil (CPO) from sustainable plantations, meeting global food industry specifications and standards.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300706/crudeplamoil_tnwfhn.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300706/crudeplamoil_tnwfhn.jpg",
     tag: "Oils",
     details: "Our crude palm oil is sourced from sustainable plantations in Indonesia, meeting stringent international quality standards. Rich in carotenoids and natural antioxidants, our CPO is ideal for food processing, oleochemical applications, and as a feedstock for refined palm oil production.",
     specifications: {
@@ -209,7 +223,7 @@ const products: Product[] = [
     slug: "refined-palm-oil",
     name: "Refined Palm Oil",
     description: "Highly refined palm oil for food processing, cosmetics, and industrial applications with consistent quality specifications.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300708/palmoil_uja2zf.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300708/palmoil_uja2zf.jpg",
     tag: "Oils",
     details: "Our refined palm oil undergoes a meticulous refining process to achieve exceptional clarity, stability, and purity. Suitable for a wide range of applications including food processing, cosmetics, soaps, and industrial uses, our refined palm oil meets the highest quality standards.",
     specifications: {
@@ -225,7 +239,7 @@ const products: Product[] = [
     slug: "coconut-oil",
     name: "Coconut Oil",
     description: "Virgin and refined coconut oil from Indonesian coconuts, suitable for food, cosmetic, and pharmaceutical industries.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300706/cocunutoil_edvzan.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300706/cocunutoil_edvzan.jpg",
     tag: "Oils",
     details: "Our coconut oil is extracted from fresh, high-quality coconuts sourced from Indonesian plantations. Available in virgin and refined forms, our coconut oil is perfect for food preparation, cosmetic formulations, and pharmaceutical applications. Known for its mild flavor and excellent stability.",
     specifications: {
@@ -241,7 +255,7 @@ const products: Product[] = [
     slug: "natural-rubber",
     name: "Natural Rubber",
     description: "SIR20 and SIR3CV grade natural rubber, processed to meet global tire and manufacturing industry specifications.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300706/rubber_nddckh.webp",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300706/rubber_nddckh.webp",
     tag: "Industrial",
     details: "Our natural rubber is produced from high-quality latex sourced from Indonesian rubber plantations. Available in SIR20 and SIR3CV grades, our rubber meets the stringent requirements of the global tire and manufacturing industries, offering excellent elasticity, tensile strength, and durability.",
     specifications: {
@@ -257,7 +271,7 @@ const products: Product[] = [
     slug: "cashew-nuts",
     name: "Cashew Nuts",
     description: "Premium raw and roasted cashew nuts in various grades, from whole nuts to splits and pieces for food processing.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300705/cashewnuts_qwpbeq.webp",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300705/cashewnuts_qwpbeq.webp",
     tag: "Nuts",
     details: "Our cashew nuts are sourced from the best plantations in Indonesia, known for producing nuts with excellent flavor and texture. Available in various grades from whole nuts to splits and pieces, our cashews are perfect for snacking, baking, and food processing applications.",
     specifications: {
@@ -272,7 +286,7 @@ const products: Product[] = [
     slug: "macadamia-nuts",
     name: "Macadamia Nuts",
     description: "Premium macadamia nuts from Indonesian plantations, available in various roast levels and packaging options.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300705/macadamia_xmh1pi.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300705/macadamia_xmh1pi.jpg",
     tag: "Nuts",
     details: "Our macadamia nuts are grown in the ideal climate conditions of Indonesia, producing nuts with rich, buttery flavor and creamy texture. Available in various roast levels and packaging options, our macadamias are perfect for premium snack markets, confectionery, and bakery applications.",
     specifications: {
@@ -288,7 +302,7 @@ const products: Product[] = [
     slug: "mangoes",
     name: "Mangoes",
     description: "Premium Indonesian mango varieties including Arumanis and Gedong Gincu, exported fresh to global markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300705/mangoes_tmfbnr.webp",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300705/mangoes_tmfbnr.webp",
     tag: "Fruits",
     details: "Our premium mangoes are sourced from the best growing regions in Indonesia, offering varieties like Arumanis and Gedong Gincu known for their exceptional sweetness and flavor. Carefully harvested and packed, our mangoes are exported fresh to markets across Asia, the Middle East, and Europe.",
     specifications: {
@@ -303,7 +317,7 @@ const products: Product[] = [
     slug: "pineapples",
     name: "Pineapples",
     description: "Sweet and juicy Indonesian pineapples, available fresh or processed for international food retailers and processors.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300705/pineapples_opqfbx.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300705/pineapples_opqfbx.jpg",
     tag: "Fruits",
     details: "Our pineapples are grown in the tropical climate of Indonesia, producing fruit with exceptional sweetness and juiciness. Available fresh or processed (canned, dried, or juiced), our pineapples meet the quality standards of international food retailers and processors worldwide.",
     specifications: {
@@ -319,7 +333,7 @@ const products: Product[] = [
     slug: "bananas",
     name: "Bananas",
     description: "Premium Cavendish and local banana varieties, carefully harvested and packed for export to Asian and Middle Eastern markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300708/banana_goflw5.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300708/banana_goflw5.jpg",
     tag: "Fruits",
     details: "Our bananas are sourced from sustainable plantations across Indonesia, offering both Cavendish for international markets and local varieties for regional trade. Carefully harvested at the optimal ripeness stage and packed using modern techniques, our bananas maintain freshness during transit.",
     specifications: {
@@ -335,7 +349,7 @@ const products: Product[] = [
     slug: "durian",
     name: "Durian",
     description: "Premium Musang King and other durian varieties, frozen or fresh, for specialty Asian food markets worldwide.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300708/durian_wkyfi3.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300708/durian_wkyfi3.jpg",
     tag: "Fruits",
     details: "Our durian selection includes the premium Musang King variety, known as the 'king of fruits' for its exceptional flavor and creamy texture. Available fresh or frozen, our durians are carefully selected and processed to maintain their unique taste and quality for export to specialty Asian food markets.",
     specifications: {
@@ -350,7 +364,7 @@ const products: Product[] = [
     slug: "green-tea",
     name: "Green Tea",
     description: "High-quality Indonesian green tea leaves, carefully processed to preserve antioxidants and fresh flavor for global tea markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784300713/greentea_rd8t6i.mp4",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784300713/greentea_rd8t6i.mp4",
     tag: "Beverages",
     details: "Our green tea is sourced from high-altitude tea gardens in Indonesia, where the cool climate and misty conditions produce leaves with exceptional antioxidant properties. Using traditional processing methods, we preserve the fresh flavor and health benefits that make our green tea highly sought after in global markets.",
     specifications: {
@@ -366,7 +380,7 @@ const products: Product[] = [
     slug: "black-tea",
     name: "Black Tea",
     description: "Premium Indonesian black tea with rich flavor profile, suitable for breakfast blends and specialty tea applications.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300705/blackttea_iregdn.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300705/blackttea_iregdn.jpg",
     tag: "Beverages",
     details: "Our black tea is produced using traditional methods that bring out a rich, full-bodied flavor with malty notes. Grown in the highlands of Indonesia, our black tea is perfect for breakfast blends, specialty tea applications, and as a base for flavored teas. Available in various grades to meet diverse market needs.",
     specifications: {
@@ -382,7 +396,7 @@ const products: Product[] = [
     slug: "tuna",
     name: "Tuna",
     description: "Premium skipjack and yellowfin tuna, freshly caught and processed for sashimi, canned, and frozen seafood markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300707/tuna_bhiefx.webp",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300707/tuna_bhiefx.webp",
     tag: "Seafood",
     details: "Our tuna is sourced from the rich fishing grounds of the Indonesian archipelago, known for producing some of the finest tuna in the world. Using state-of-the-art processing facilities, we ensure that our skipjack and yellowfin tuna maintains the highest quality standards for sashimi, canned, and frozen markets.",
     specifications: {
@@ -398,7 +412,7 @@ const products: Product[] = [
     slug: "shrimp",
     name: "Shrimp",
     description: "High-quality vannamei and black tiger shrimp, farmed and processed to meet international food safety standards.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300707/shrrimp_liaohz.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300707/shrrimp_liaohz.jpg",
     tag: "Seafood",
     details: "Our shrimp are sourced from certified sustainable aquaculture farms across Indonesia. We offer both vannamei (white shrimp) and black tiger shrimp, processed using modern facilities that meet international food safety standards. Available in various forms including head-on, headless, peeled, and breaded.",
     specifications: {
@@ -414,7 +428,7 @@ const products: Product[] = [
     slug: "squid",
     name: "Squid",
     description: "Fresh and frozen squid products, cleaned and processed for restaurant chains and seafood processors worldwide.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300707/squid_b9kihi.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300707/squid_b9kihi.jpg",
     tag: "Seafood",
     details: "Our squid is sourced from the pristine waters of the Indonesian archipelago and processed using advanced techniques to maintain optimal quality. Available in various forms including whole, cleaned, tubes, and rings, our squid meets the demanding standards of restaurant chains and seafood processors worldwide.",
     specifications: {
@@ -430,7 +444,7 @@ const products: Product[] = [
     slug: "palm-sugar",
     name: "Palm Sugar",
     description: "Organic palm sugar and coconut sugar, traditionally processed and certified for health food and specialty markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300706/Palm_Sugar_jpzm7c.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300706/Palm_Sugar_jpzm7c.jpg",
     tag: "Sweeteners",
     details: "Our palm sugar is traditionally produced by smallholder farmers in Indonesia using time-honored methods. Made from the sap of palm trees, our organic palm sugar has a rich caramel flavor and low glycemic index, making it popular in health food markets and for specialty culinary applications.",
     specifications: {
@@ -446,7 +460,7 @@ const products: Product[] = [
     slug: "coconut-sugar",
     name: "Coconut Sugar",
     description: "Low glycemic index coconut sugar, sustainably produced from Indonesian coconut palms for health-conscious consumers.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300704/cocunutsugar_2_fcr4rk.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300704/cocunutsugar_2_fcr4rk.jpg",
     tag: "Sweeteners",
     details: "Our coconut sugar is produced from the sap of coconut palm flowers, offering a natural sweetener with a low glycemic index. Sustainably harvested and minimally processed, our coconut sugar retains its natural minerals and has a rich, caramel-like flavor that appeals to health-conscious consumers worldwide.",
     specifications: {
@@ -462,7 +476,7 @@ const products: Product[] = [
     slug: "turmeric",
     name: "Turmeric",
     description: "Premium Indonesian turmeric with high curcumin content, available as dried rhizomes, powder, and extracts for food and nutraceutical industries.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300707/tumeric_zclaur.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300707/tumeric_zclaur.jpg",
     tag: "Spices",
     details: "Our turmeric is sourced from the best growing regions in Indonesia, known for producing rhizomes with exceptionally high curcumin content. Available as dried rhizomes, fine powder, or standardized extracts, our turmeric is used in food processing, nutraceuticals, and traditional medicine applications worldwide.",
     specifications: {
@@ -478,7 +492,7 @@ const products: Product[] = [
     slug: "ginger",
     name: "Ginger",
     description: "High-quality Indonesian ginger, fresh or dried, known for its strong flavor and medicinal properties in international markets.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784300706/Ginger_eheca2.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784300706/Ginger_eheca2.jpg",
     tag: "Spices",
     details: "Our ginger is grown in the volcanic soils of Indonesia, producing rhizomes with strong flavor and high gingerol content. Available fresh or dried, in whole or ground form, our ginger is prized for its culinary and medicinal properties. Sourced from sustainable farms and processed to maintain maximum potency.",
     specifications: {
@@ -493,7 +507,7 @@ const products: Product[] = [
     slug: "galangal",
     name: "Galangal",
     description: "Fresh and dried galangal rhizomes, essential for Southeast Asian cuisine and increasingly popular in global gourmet cooking.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302955/Live_Galangal_Roots_Alpinia_Galanga_1_2_Lb_-_Etsy_jj0zdt.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302955/Live_Galangal_Roots_Alpinia_Galanga_1_2_Lb_-_Etsy_jj0zdt.jpg",
     tag: "Spices",
     details: "Our galangal is sourced from traditional farms in Indonesia, where the ideal growing conditions produce rhizomes with the distinctive citrusy, piney flavor that makes galangal essential in Southeast Asian cuisine. Available fresh or dried, our galangal meets the quality demands of gourmet restaurants and food manufacturers worldwide.",
     specifications: {
@@ -508,7 +522,7 @@ const products: Product[] = [
     slug: "lemongrass",
     name: "Lemongrass",
     description: "Premium lemongrass stalks and powder, sourced from sustainable farms for culinary, tea, and essential oil production.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302950/download_prwmn8.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302950/download_prwmn8.jpg",
     tag: "Herbs",
     details: "Our lemongrass is grown in sustainable farms across Indonesia, producing stalks with excellent citral content and refreshing aroma. Available as fresh stalks, dried leaves, or fine powder, our lemongrass is used in culinary applications, herbal teas, and essential oil production worldwide.",
     specifications: {
@@ -523,7 +537,7 @@ const products: Product[] = [
     slug: "kaffir-lime-leaves",
     name: "Kaffir Lime Leaves",
     description: "Fresh and dried kaffir lime leaves, essential for authentic Southeast Asian cuisine and increasingly demanded by global restaurants.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302957/_Kaffir_Limes_and_Kaffir_Leaves__fxabtn.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302957/_Kaffir_Limes_and_Kaffir_Leaves__fxabtn.jpg",
     tag: "Herbs",
     details: "Our kaffir lime leaves are sourced from dedicated plantations in Indonesia, where the ideal climate produces leaves with intense citrus aroma. Essential for authentic Southeast Asian cuisine, our fresh and dried kaffir lime leaves are increasingly demanded by restaurants and food manufacturers worldwide seeking authentic flavors.",
     specifications: {
@@ -538,7 +552,7 @@ const products: Product[] = [
     slug: "long-pepper",
     name: "Long Pepper",
     description: "Traditional Indonesian long pepper with complex spicy flavor, gaining popularity in gourmet and fusion cuisine worldwide.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302939/Poivre_de_Selim__vertus_utilisation_et_recettes_-_Label_Afrique_jx3afj.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302939/Poivre_de_Selim__vertus_utilisation_et_recettes_-_Label_Afrique_jx3afj.jpg",
     tag: "Spices",
     details: "Our long pepper is a traditional Indonesian spice with a complex, pungent flavor that is more aromatic than black pepper. Gaining popularity in gourmet and fusion cuisine worldwide, our long pepper is carefully harvested and processed to preserve its unique characteristics and essential oil content.",
     specifications: {
@@ -554,7 +568,7 @@ const products: Product[] = [
     slug: "cardamom",
     name: "Cardamom",
     description: "Premium Indonesian cardamom pods with intense aroma, suitable for culinary, beverage, and pharmaceutical applications.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302943/Ceylon_Organic_Green_Cardamom_seeds_100_Natural_Herbs_Spices_free_shipping___eBay_jxb2os.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302943/Ceylon_Organic_Green_Cardamom_seeds_100_Natural_Herbs_Spices_free_shipping___eBay_jxb2os.jpg",
     tag: "Spices",
     details: "Our cardamom pods are sourced from the highlands of Indonesia, where the cool mountain air produces pods with exceptional aroma and flavor. Known as the 'queen of spices,' our cardamom is used in culinary applications, premium coffee blends, and pharmaceutical products worldwide.",
     specifications: {
@@ -569,7 +583,7 @@ const products: Product[] = [
     slug: "candlenuts",
     name: "Candlenuts",
     description: "High-quality candlenuts (kemiri) for Indonesian cuisine and industrial applications, carefully processed and packed.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302946/100_grams_of_broken_candlenuts_spiced_candlenuts_rinaoe.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302946/100_grams_of_broken_candlenuts_spiced_candlenuts_rinaoe.jpg",
     tag: "Nuts",
     details: "Our candlenuts (kemiri) are sourced from sustainable plantations across Indonesia. With their high oil content and mild, nutty flavor, they are essential in Indonesian cuisine and increasingly used in gourmet cooking worldwide. Our candlenuts are carefully processed and packed to maintain freshness and quality.",
     specifications: {
@@ -584,7 +598,7 @@ const products: Product[] = [
     slug: "areca-nuts",
     name: "Areca Nuts",
     description: "Premium areca nuts from Indonesian plantations, processed according to international quality and safety standards.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302938/How_to_Grow_a_Betel_Nut_Tree__kl5fo6.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302938/How_to_Grow_a_Betel_Nut_Tree__kl5fo6.jpg",
     tag: "Nuts",
     details: "Our areca nuts are sourced from established plantations in Indonesia and processed according to international quality and safety standards. Available in various grades and forms, our areca nuts meet the requirements of international markets for both traditional and modern applications.",
     specifications: {
@@ -599,7 +613,7 @@ const products: Product[] = [
     slug: "tempeh",
     name: "Tempeh",
     description: "Traditional Indonesian tempeh, fermented soybean product with high protein content, available fresh or frozen for export.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302941/how_to_make_tempeh_easy_method_eljxmo.jpg",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302941/how_to_make_tempeh_easy_method_eljxmo.jpg",
     tag: "Specialty Foods",
     details: "Our tempeh is a traditional Indonesian fermented soybean product, made using time-honored methods and high-quality soybeans. With its high protein content, firm texture, and nutty flavor, our tempeh is available fresh or frozen for export to health food markets and specialty food retailers worldwide.",
     specifications: {
@@ -614,7 +628,7 @@ const products: Product[] = [
     slug: "tapioca",
     name: "Tapioca",
     description: "Premium tapioca starch and pearls from Indonesian cassava, used in food processing, textile, and paper industries.",
-    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784302934/Equilibra_a%C3%A7%C3%BAcar_no_sangue_aumenta_energia_e_fortalece_imunidade__os_benef%C3%ADcios_da_mandioca_%C3%A0_sa%C3%BAde_wn1yip.webp",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784302934/Equilibra_a%C3%A7%C3%BAcar_no_sangue_aumenta_energia_e_fortalece_imunidade__os_benef%C3%ADcios_da_mandioca_%C3%A0_sa%C3%BAde_wn1yip.webp",
     tag: "Starch Products",
     details: "Our tapioca products are made from high-quality cassava sourced from Indonesian farms. We produce tapioca starch, pearls, and flakes that meet international standards for food processing, textile sizing, paper manufacturing, and other industrial applications. Our products are known for their purity, consistency, and excellent functional properties.",
     specifications: {

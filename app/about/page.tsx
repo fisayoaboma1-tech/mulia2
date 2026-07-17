@@ -158,7 +158,7 @@ export default function AboutPage() {
           playsInline
           className="absolute inset-0 w-full h-full object-cover"
         >
-          <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/v1784304906/customsolution_lolb4o.mp4" type="video/mp4" />
+          <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784304906/customsolution_lolb4o.mp4" type="video/mp4" />
         </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-foreground/70" />

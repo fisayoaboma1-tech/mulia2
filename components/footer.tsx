@@ -3,8 +3,17 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Mail, MapPin, Phone } from "lucide-react"
-import { LegalModal } from "@/components/legal-modal"
-import { BlogModal } from "@/components/blog-modal"
+import dynamic from "next/dynamic"
+
+const LegalModal = dynamic(() => import("@/components/legal-modal").then((mod) => mod.LegalModal), { ssr: false }) as React.ComponentType<{
+  type: "legal-notice" | "privacy-policy" | "terms-of-sale" | null
+  isOpen: boolean
+  onClose: () => void
+}>
+const BlogModal = dynamic(() => import("@/components/blog-modal").then((mod) => mod.BlogModal), { ssr: false }) as React.ComponentType<{
+  isOpen: boolean
+  onClose: () => void
+}>
 
 export function Footer() {
   const [legalModalType, setLegalModalType] = useState<"legal-notice" | "privacy-policy" | "terms-of-sale" | null>(null)

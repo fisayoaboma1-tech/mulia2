@@ -41,7 +41,7 @@ export function MissionSection() {
             className="w-full h-full object-cover"
           >
             <source
-              src="https://res.cloudinary.com/qz5m8bhg/video/upload/v1784296549/WhatsApp_Video_2026-07-17_at_2.54.45_PM_rmiztx.mp4"
+              src="https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784296549/WhatsApp_Video_2026-07-17_at_2.54.45_PM_rmiztx.mp4"
               type="video/mp4"
             />
           </video>

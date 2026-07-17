@@ -126,7 +126,7 @@ export default function ProcessPage() {
               playsInline
               className="w-full h-full object-cover"
             >
-              <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/v1784305007/processing_wperwg.mp4" type="video/mp4" />
+              <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784305007/processing_wperwg.mp4" type="video/mp4" />
             </video>
             
             {/* Overlay Text */}
@@ -166,7 +166,7 @@ export default function ProcessPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_5_fjb6aw.jpg"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_5_fjb6aw.jpg"
                 alt="Processing facility"
                 className="w-full h-full object-cover"
               />
@@ -174,7 +174,7 @@ export default function ProcessPage() {
 
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_1_ssnsrd.jpg"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_1_ssnsrd.jpg"
                 alt="Quality control lab"
                 className="w-full h-full object-cover"
               />
@@ -182,7 +182,7 @@ export default function ProcessPage() {
 
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_4_wpvaub.jpg"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_4_wpvaub.jpg"
                 alt="Warehouse and logistics"
                 className="w-full h-full object-cover"
               />
@@ -190,7 +190,7 @@ export default function ProcessPage() {
 
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_2_bqizj4.jpg"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_2_bqizj4.jpg"
                 alt="Farm partnerships"
                 className="w-full h-full object-cover"
               />
@@ -198,7 +198,7 @@ export default function ProcessPage() {
 
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_3_g5ehw4.jpg"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_3_g5ehw4.jpg"
                 alt="Shipping and export"
                 className="w-full h-full object-cover"
               />
@@ -206,7 +206,7 @@ export default function ProcessPage() {
 
             <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306135/1_1_pbjyvo.webp"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306135/1_1_pbjyvo.webp"
                 alt="Sustainable farming"
                 className="w-full h-full object-cover"
               />

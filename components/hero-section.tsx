@@ -12,8 +12,8 @@ export function HeroSection() {
   const [scrollProgress, setScrollProgress] = useState(0)
 
   const videoSources = [
-    "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4",
-    "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784293864/From_Klickpin.com-_Try_Cozy_curly_hair_care_ideas_that_are_packed_with_ideas_people_keep_saving_and_clicking_on_lately_for_ideas_worth_saving_righ_vabwrk.mp4",
+    "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4",
+    "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293864/From_Klickpin.com-_Try_Cozy_curly_hair_care_ideas_that_are_packed_with_ideas_people_keep_saving_and_clicking_on_lately_for_ideas_worth_saving_righ_vabwrk.mp4",
   ]
   const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
 
