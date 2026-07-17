@@ -36,9 +36,12 @@ export function Footer() {
               Agricultural trading and supply company connecting Indonesian producers with global markets through reliable sourcing, strict quality control, and efficient logistics.
             </p>
             <div className="space-y-3 text-sm text-primary-foreground/70">
-              <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4 shrink-0" />
-                <a href="mailto:marketing@pt-kanematsutrading.id" className="hover:text-primary-foreground transition-colors">info@kanematsu-trading.com</a>
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 mt-1 shrink-0" />
+                <div className="flex flex-col gap-2">
+                  <a href="mailto:marketing@pt-kanematsutrading.id" className="hover:text-primary-foreground transition-colors">marketing@pt-kanematsutrading.id</a>
+                  <a href="mailto:agusjoko@pt-kanematsutrading.id" className="hover:text-primary-foreground transition-colors">agusjoko@pt-kanematsutrading.id</a>
+                </div>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 shrink-0" />

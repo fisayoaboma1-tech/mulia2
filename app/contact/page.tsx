@@ -144,7 +144,10 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-base sm:text-lg font-medium text-foreground mb-1 sm:mb-2">Email</h3>
-                <a href="mailto:info@kanematsu-trading.com" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">info@kanematsu-trading.com</a>
+                <div className="flex flex-col gap-1">
+                  <a href="mailto:marketing@pt-kanematsutrading.id" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">marketing@pt-kanematsutrading.id</a>
+                  <a href="mailto:agusjoko@pt-kanematsutrading.id" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">agusjoko@pt-kanematsutrading.id</a>
+                </div>
               </div>
 
               <div>
