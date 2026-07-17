@@ -14,7 +14,7 @@ export function Footer() {
     <>
     <footer className="bg-foreground text-background py-16 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-10 md:gap-12 lg:gap-8 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-6">
@@ -23,7 +23,7 @@ export function Footer() {
               </div>
               <span className="font-serif text-xl font-medium text-background">PT Kanematsu Trading Indonesia</span>
             </Link>
-            <p className="text-background/70 leading-relaxed mb-6 max-w-sm">
+            <p className="text-background/70 leading-relaxed mb-6 max-w-sm text-sm sm:text-base">
               Agricultural trading and supply company connecting Indonesian producers with global markets through reliable sourcing, strict quality control, and efficient logistics.
             </p>
             <div className="space-y-3 text-sm text-background/70">
@@ -49,7 +49,7 @@ export function Footer() {
           </div>
 
           {/* Products Links */}
-          <div>
+          <div className="md:justify-self-start lg:justify-self-auto">
             <h4 className="font-medium text-background mb-4">Products</h4>
             <ul className="space-y-3">
               <li>
@@ -76,7 +76,7 @@ export function Footer() {
           </div>
 
           {/* Company Links */}
-          <div>
+          <div className="md:justify-self-start lg:justify-self-auto">
             <h4 className="font-medium text-background mb-4">Company</h4>
             <ul className="space-y-3">
               <li>
@@ -93,13 +93,13 @@ export function Footer() {
           </div>
 
           {/* Resources Links */}
-          <div>
+          <div className="md:justify-self-start lg:justify-self-auto">
             <h4 className="font-medium text-background mb-4">Resources</h4>
             <ul className="space-y-3">
               <li>
                 <button
                   onClick={() => setBlogOpen(true)}
-                  className="text-sm text-background/70 hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
+                  className="text-sm text-background/70 hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
                 >
                   Blog
                 </button>
@@ -114,9 +114,11 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-background/50">© 2026 PT Kanematsu Trading Indonesia. All rights reserved.</p>
-          <div className="flex gap-6 text-sm text-background/50">
+        <div className="border-t border-background/10 pt-8 flex flex-col items-center text-center md:flex-row md:justify-between md:text-left gap-4">
+          <p className="text-xs sm:text-sm text-background/50 max-w-xs md:max-w-none">
+            &copy; 2026 PT Kanematsu Trading Indonesia. All rights reserved.
+          </p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-xs sm:text-sm text-background/50">
             <button
               onClick={() => setLegalModalType("legal-notice")}
               className="hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
