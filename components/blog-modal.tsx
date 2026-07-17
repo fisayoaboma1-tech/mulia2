@@ -290,57 +290,57 @@ export function BlogModal({ isOpen, onClose }: BlogModalProps) {
       {/* Article Detail Modal */}
       {selectedPost && (
         <div
-          className="fixed inset-0 z-[60] flex items-center justify-center p-4 transition-all duration-500 ease-out"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-2 sm:p-4 transition-all duration-500 ease-out"
         >
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={handleCloseDetail}
           />
           <div
-            className="relative bg-background rounded-3xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden transition-all duration-500 ease-out opacity-100 scale-100 translate-y-0"
+            className="relative bg-background rounded-2xl sm:rounded-3xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden transition-all duration-500 ease-out opacity-100 scale-100 translate-y-0"
           >
             <button
               onClick={handleCloseDetail}
-              className="absolute top-4 right-4 z-10 bg-background/90 backdrop-blur-sm rounded-full p-2 hover:bg-background transition-all duration-300 hover:scale-110"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 bg-background/90 backdrop-blur-sm rounded-full p-1.5 sm:p-2 hover:bg-background transition-all duration-300 hover:scale-110"
               aria-label="Close article"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
 
-            <div className="overflow-y-auto max-h-[90vh]">
+            <div className="overflow-y-auto max-h-[95vh] sm:max-h-[90vh]">
               {/* Article Hero Image */}
-              <div className="relative aspect-[21/9] overflow-hidden bg-muted">
+              <div className="relative aspect-[4/3] sm:aspect-[21/9] overflow-hidden bg-muted">
                 <img
                   src={selectedPost.image || "/placeholder.svg"}
                   alt={selectedPost.title}
                   className="w-full h-full object-cover"
                 />
-                <span className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1.5 rounded-full">
+                <span className="absolute top-3 left-3 sm:top-4 sm:left-4 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 rounded-full">
                   {selectedPost.category}
                 </span>
               </div>
 
               {/* Article Content */}
-              <div className="p-8 md:p-12 lg:p-16">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-4 h-4" />
+              <div className="p-4 sm:p-8 md:p-10 lg:p-14">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4">
+                  <span className="flex items-center gap-1 sm:gap-1.5">
+                    <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                     {selectedPost.date}
                   </span>
-                  <span className="flex items-center gap-1.5">
-                    <User className="w-4 h-4" />
+                  <span className="flex items-center gap-1 sm:gap-1.5">
+                    <User className="w-3 h-3 sm:w-4 sm:h-4" />
                     {selectedPost.author}
                   </span>
                 </div>
 
-                <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-6 leading-tight">
+                <h2 className="font-serif text-lg sm:text-2xl md:text-3xl lg:text-4xl font-medium text-foreground mb-4 sm:mb-6 leading-tight">
                   {selectedPost.title}
                 </h2>
 
                 <div className="prose prose-lg max-w-none">
                   {selectedPost.content.split("\n").map((paragraph, i) => (
                     paragraph.trim() ? (
-                      <p key={i} className="text-muted-foreground leading-relaxed mb-5 text-base md:text-lg">
+                      <p key={i} className="text-muted-foreground leading-relaxed mb-3 sm:mb-5 text-sm sm:text-base md:text-lg">
                         {paragraph}
                       </p>
                     ) : null
@@ -348,8 +348,8 @@ export function BlogModal({ isOpen, onClose }: BlogModalProps) {
                 </div>
 
                 {selectedPost.published && (
-                  <div className="mt-8 pt-8 border-t border-border/30">
-                    <p className="text-sm text-muted-foreground italic">
+                  <div className="mt-6 sm:mt-8 pt-6 sm:pt-8 border-t border-border/30">
+                    <p className="text-xs sm:text-sm text-muted-foreground italic">
                       This article was published on {selectedPost.date} by {selectedPost.author}. For more information about our products and services, please contact us.
                     </p>
                   </div>
