@@ -144,7 +144,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-base sm:text-lg font-medium text-foreground mb-1 sm:mb-2">Email</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">info@kanematsu-trading.com</p>
+                <a href="mailto:info@kanematsu-trading.com" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">info@kanematsu-trading.com</a>
               </div>
 
               <div>
@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-base sm:text-lg font-medium text-foreground mb-1 sm:mb-2">Phone</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">+62 21 1234 5678</p>
+                <a href="tel:+62318521230" className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors">+62-031 8521230</a>
               </div>
 
               <div>
@@ -165,7 +165,10 @@ export default function ContactPage() {
                   </svg>
                 </div>
                 <h3 className="font-serif text-base sm:text-lg font-medium text-foreground mb-1 sm:mb-2">Location</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground">Jakarta, Indonesia</p>
+                <div className="flex flex-col text-xs sm:text-sm text-muted-foreground">
+                  <span>Atria Sudirman Building, 15th Floor</span>
+                  <span>Jl. Jend. Sudirman Kav. 33A, Central Jakarta</span>
+                </div>
               </div>
             </div>
           </div>
