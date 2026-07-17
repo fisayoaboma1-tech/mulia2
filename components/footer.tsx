@@ -1,5 +1,9 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import { Mail, MapPin, Phone } from "lucide-react"
+import { LegalModal } from "@/components/legal-modal"
 
 const footerLinks = {
   produits: [
@@ -19,7 +23,10 @@ const footerLinks = {
 }
 
 export function Footer() {
+  const [legalModalType, setLegalModalType] = useState<"legal-notice" | "privacy-policy" | "terms-of-sale" | null>(null)
+
   return (
+    <>
     <footer className="bg-foreground text-background py-16 lg:py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-16">
@@ -46,7 +53,7 @@ export function Footer() {
                   <a href="tel:+6281686892024" className="hover:text-background transition-colors">+62 816-868-92024</a>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-3 pt-3">
                 <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
                 <div className="flex flex-col">
                   <span>Atria Sudirman Building, 15th Floor</span>
@@ -101,18 +108,34 @@ export function Footer() {
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-background/50">© 2026 PT Kanematsu Trading Indonesia. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-background/50">
-            <Link href="#" className="hover:text-background transition-colors">
+            <button
+              onClick={() => setLegalModalType("legal-notice")}
+              className="hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
+            >
               Legal notice
-            </Link>
-            <Link href="#" className="hover:text-background transition-colors">
+            </button>
+            <button
+              onClick={() => setLegalModalType("privacy-policy")}
+              className="hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
+            >
               Privacy policy
-            </Link>
-            <Link href="#" className="hover:text-background transition-colors">
+            </button>
+            <button
+              onClick={() => setLegalModalType("terms-of-sale")}
+              className="hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
+            >
               Terms of sale
-            </Link>
+            </button>
           </div>
         </div>
       </div>
     </footer>
+
+    <LegalModal
+      type={legalModalType}
+      isOpen={!!legalModalType}
+      onClose={() => setLegalModalType(null)}
+    />
+    </>
   )
 }
