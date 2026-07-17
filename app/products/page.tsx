@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useMemo } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react"
+import { ArrowRight, ChevronLeft, ChevronRight, Search, X } from "lucide-react"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
 import { ProductModal } from "@/components/product-modal"
 
@@ -632,6 +632,19 @@ export default function ProductsPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(10)
+  const [searchQuery, setSearchQuery] = useState("")
+
+  // Filter products based on search query
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) return products
+    const query = searchQuery.toLowerCase().trim()
+    return products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(query) ||
+        product.tag.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query),
+    )
+  }, [searchQuery])
 
   useEffect(() => {
     const handleResize = () => {
@@ -649,18 +662,18 @@ export default function ProductsPage() {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  // Reset to page 1 when items per page changes
+  // Reset to page 1 when items per page or search changes
   useEffect(() => {
-    const maxPage = Math.ceil(products.length / itemsPerPage)
+    const maxPage = Math.ceil(filteredProducts.length / itemsPerPage)
     if (currentPage > maxPage) {
       setCurrentPage(maxPage)
     }
-  }, [itemsPerPage, currentPage])
+  }, [itemsPerPage, currentPage, filteredProducts.length])
 
-  const totalPages = Math.ceil(products.length / itemsPerPage)
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const currentProducts = products.slice(startIndex, endIndex)
+  const currentProducts = filteredProducts.slice(startIndex, endIndex)
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -701,7 +714,7 @@ export default function ProductsPage() {
       <section className="py-24 lg:py-32 bg-muted/30">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-16 lg:mb-20">
+          <div className="text-center mb-12 lg:mb-16">
             <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
               Our Products
             </p>
@@ -714,82 +727,126 @@ export default function ProductsPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-8">
-            {currentProducts.map((product) => (
-              <div
-                key={product.slug}
-                className="group block bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
-                onClick={() => setSelectedProduct(product)}
-              >
-                {/* Image */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-muted z-10">
-                  <img
-                    src={product.image || "/placeholder.svg"}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <span className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 rounded-full z-10">
-                    {product.tag}
-                  </span>
-                </div>
-                {/* Content */}
-                <div className="p-3 sm:p-4 lg:p-8">
-                  <h3 className="font-serif text-foreground mb-1 sm:mb-2 lg:mb-3 text-sm sm:text-base lg:text-3xl font-normal leading-tight">{product.name}</h3>
-                  <p className="text-muted-foreground leading-snug mb-2 sm:mb-3 lg:mb-6 text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">{product.description}</p>
-                  <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
-                    Discover
-                    <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </span>
-                </div>
-              </div>
-            ))}
+          {/* Search Bar */}
+          <div className="max-w-2xl mx-auto mb-10 lg:mb-14">
+            <div className="relative">
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search products by name, category, or description..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value)
+                  setCurrentPage(1)
+                }}
+                className="w-full pl-12 pr-12 py-3.5 sm:py-4 bg-background border border-border/50 rounded-2xl text-sm sm:text-base text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary/50 transition-all duration-300 shadow-sm shadow-primary/5"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
+            {searchQuery && (
+              <p className="text-sm text-muted-foreground mt-3 text-center">
+                {filteredProducts.length === 0
+                  ? "No products found matching your search."
+                  : `Showing ${filteredProducts.length} product${filteredProducts.length !== 1 ? "s" : ""} matching "${searchQuery}"`}
+              </p>
+            )}
           </div>
 
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-12 lg:mt-16">
-              {/* Previous Button */}
-              <button
-                onClick={() => goToPage(currentPage - 1)}
-                disabled={currentPage === 1}
-                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
-                  currentPage === 1
-                    ? 'text-muted-foreground/30 cursor-not-allowed'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                }`}
-                aria-label="Previous page"
-              >
-                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
+          {filteredProducts.length > 0 ? (
+            <>
+              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 sm:gap-3 md:gap-4 lg:gap-8">
+                {currentProducts.map((product) => (
+                  <div
+                    key={product.slug}
+                    className="group block bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
+                    onClick={() => setSelectedProduct(product)}
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-[4/5] overflow-hidden bg-muted z-10">
+                      <img
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                      <span className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 rounded-full z-10">
+                        {product.tag}
+                      </span>
+                    </div>
+                    {/* Content */}
+                    <div className="p-3 sm:p-4 lg:p-8">
+                      <h3 className="font-serif text-foreground mb-1 sm:mb-2 lg:mb-3 text-sm sm:text-base lg:text-3xl font-normal leading-tight">{product.name}</h3>
+                      <p className="text-muted-foreground leading-snug mb-2 sm:mb-3 lg:mb-6 text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">{product.description}</p>
+                      <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
+                        Discover
+                        <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
 
-              {/* Page Numbers */}
-              {visiblePages.map((page) => (
-                <button
-                  key={page}
-                  onClick={() => goToPage(page as number)}
-                  className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm font-medium transition-all duration-300 ${
-                    currentPage === page
-                      ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="flex items-center justify-center gap-1.5 sm:gap-2 mt-10 sm:mt-12 lg:mt-16">
+                  {/* Previous Button */}
+                  <button
+                    onClick={() => goToPage(currentPage - 1)}
+                    disabled={currentPage === 1}
+                    className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
+                      currentPage === 1
+                        ? 'text-muted-foreground/30 cursor-not-allowed'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                    }`}
+                    aria-label="Previous page"
+                  >
+                    <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
 
-              {/* Next Button */}
-              <button
-                onClick={() => goToPage(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
-                  currentPage === totalPages
-                    ? 'text-muted-foreground/30 cursor-not-allowed'
-                    : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
-                }`}
-                aria-label="Next page"
-              >
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-              </button>
+                  {/* Page Numbers */}
+                  {visiblePages.map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => goToPage(page as number)}
+                      className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full text-sm font-medium transition-all duration-300 ${
+                        currentPage === page
+                          ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105'
+                          : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
+
+                  {/* Next Button */}
+                  <button
+                    onClick={() => goToPage(currentPage + 1)}
+                    disabled={currentPage === totalPages}
+                    className={`flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-300 ${
+                      currentPage === totalPages
+                        ? 'text-muted-foreground/30 cursor-not-allowed'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                    }`}
+                    aria-label="Next page"
+                  >
+                    <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="text-center py-16">
+              <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mx-auto mb-4">
+                <Search className="w-6 h-6 text-muted-foreground" />
+              </div>
+              <h3 className="font-serif text-xl font-medium text-foreground mb-2">No products found</h3>
+              <p className="text-muted-foreground">Try adjusting your search terms or browse all products.</p>
             </div>
           )}
         </div>

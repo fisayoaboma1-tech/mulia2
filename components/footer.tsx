@@ -4,26 +4,11 @@ import { useState } from "react"
 import Link from "next/link"
 import { Mail, MapPin, Phone } from "lucide-react"
 import { LegalModal } from "@/components/legal-modal"
-
-const footerLinks = {
-  produits: [
-    { label: "Premium Grains", href: "#" },
-    { label: "Spices & Herbs", href: "#" },
-    { label: "Coffee & Cocoa", href: "#" },
-    { label: "All products", href: "#" },
-  ],
-  entreprise: [
-    { label: "Our story", href: "#" },
-    { label: "Process", href: "#science" },
-  ],
-  ressources: [
-    { label: "Blog", href: "#" },
-    { label: "Contact", href: "#" },
-  ],
-}
+import { BlogModal } from "@/components/blog-modal"
 
 export function Footer() {
   const [legalModalType, setLegalModalType] = useState<"legal-notice" | "privacy-policy" | "terms-of-sale" | null>(null)
+  const [blogOpen, setBlogOpen] = useState(false)
 
   return (
     <>
@@ -63,43 +48,67 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Links */}
+          {/* Products Links */}
           <div>
             <h4 className="font-medium text-background mb-4">Products</h4>
             <ul className="space-y-3">
-              {footerLinks.produits.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/70 hover:text-background transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/products" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Premium Grains
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Spices & Herbs
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Coffee & Cocoa
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" className="text-sm text-background/70 hover:text-background transition-colors">
+                  All products
+                </Link>
+              </li>
             </ul>
           </div>
 
+          {/* Company Links */}
           <div>
             <h4 className="font-medium text-background mb-4">Company</h4>
             <ul className="space-y-3">
-              {footerLinks.entreprise.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/70 hover:text-background transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <Link href="/about" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Our story
+                </Link>
+              </li>
+              <li>
+                <Link href="/#science" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Process
+                </Link>
+              </li>
             </ul>
           </div>
 
+          {/* Resources Links */}
           <div>
             <h4 className="font-medium text-background mb-4">Resources</h4>
             <ul className="space-y-3">
-              {footerLinks.ressources.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} className="text-sm text-background/70 hover:text-background transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <button
+                  onClick={() => setBlogOpen(true)}
+                  className="text-sm text-background/70 hover:text-background transition-colors cursor-pointer bg-transparent border-none p-0"
+                >
+                  Blog
+                </button>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm text-background/70 hover:text-background transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -135,6 +144,10 @@ export function Footer() {
       type={legalModalType}
       isOpen={!!legalModalType}
       onClose={() => setLegalModalType(null)}
+    />
+    <BlogModal
+      isOpen={blogOpen}
+      onClose={() => setBlogOpen(false)}
     />
     </>
   )
