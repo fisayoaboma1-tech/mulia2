@@ -223,18 +223,18 @@ export function LegalModal({ type, isOpen, onClose }: LegalModalProps) {
         </button>
 
         {/* Scrollable Content */}
-        <div className="overflow-y-auto max-h-[90vh] p-8 md:p-12 lg:p-16">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-8 lg:mb-12">
+        <div className="overflow-y-auto max-h-[90vh] p-5 sm:p-8 md:p-12 lg:p-16">
+          <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-medium text-foreground mb-6 sm:mb-8 lg:mb-12">
             {data.title}
           </h2>
 
           {data.sections.map((section, i) => (
-            <div key={i} className="mb-8 lg:mb-12 last:mb-0">
-              <h3 className="font-serif text-xl md:text-2xl font-medium text-foreground mb-4 pb-2 border-b border-border/30">
+            <div key={i} className="mb-6 sm:mb-8 lg:mb-12 last:mb-0">
+              <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-3 sm:mb-4 pb-2 border-b border-border/30">
                 {section.heading}
               </h3>
               {section.paragraphs.map((p, j) => (
-                <p key={j} className="text-muted-foreground leading-relaxed mb-4 last:mb-0 text-base md:text-lg">
+                <p key={j} className="text-muted-foreground leading-relaxed mb-3 sm:mb-4 last:mb-0 text-sm sm:text-base md:text-lg">
                   {p}
                 </p>
               ))}
