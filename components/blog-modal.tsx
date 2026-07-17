@@ -234,49 +234,49 @@ export function BlogModal({ isOpen, onClose }: BlogModalProps) {
               Insights, stories, and updates from PT Kanematsu Trading Indonesia on agricultural commodities, market trends, and sustainable practices.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-8">
               {blogPosts.map((post) => (
                 <div
                   key={post.slug}
                   className="group bg-card rounded-2xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
                   onClick={() => setSelectedPost(post)}
                 >
-                  <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+                  <div className="relative aspect-[4/5] sm:aspect-[16/9] overflow-hidden bg-muted">
                     <img
                       src={post.image || "/placeholder.svg"}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <span className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm text-foreground text-[10px] font-medium px-2.5 py-1 rounded-full">
+                    <span className="absolute top-2 left-2 sm:top-3 sm:left-3 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-2.5 sm:py-1 rounded-full">
                       {post.category}
                     </span>
                   </div>
-                  <div className="p-5 lg:p-6">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground mb-3">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3 h-3" />
+                  <div className="p-3 sm:p-4 lg:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-0.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground mb-1 sm:mb-2 lg:mb-3">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                         {post.date}
                       </span>
-                      <span className="flex items-center gap-1.5">
-                        <User className="w-3 h-3" />
+                      <span className="hidden sm:flex items-center gap-1">
+                        <User className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
                         {post.author}
                       </span>
                     </div>
-                    <h3 className="font-serif text-lg md:text-xl font-medium text-foreground mb-2 leading-tight line-clamp-2">
+                    <h3 className="font-serif text-foreground mb-1 sm:mb-2 text-sm sm:text-base lg:text-xl font-medium leading-tight line-clamp-2">
                       {post.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 mb-4">
+                    <p className="text-muted-foreground leading-snug mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm line-clamp-2 sm:line-clamp-3">
                       {post.longExcerpt}
                     </p>
                     {post.published ? (
-                      <span className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium group/btn">
+                      <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
                         Read article
-                        <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-1 sm:ml-1.5 w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                       </span>
                     ) : (
-                      <span className="inline-flex items-center text-primary hover:text-primary/80 text-sm font-medium group/btn">
+                      <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
                         Coming soon
-                        <ArrowRight className="ml-1.5 w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="ml-1 sm:ml-1.5 w-3 h-3 sm:w-3.5 sm:h-3.5 group-hover/btn:translate-x-1 transition-transform" />
                       </span>
                     )}
                   </div>
