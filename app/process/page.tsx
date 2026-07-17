@@ -130,15 +130,15 @@ export default function ProcessPage() {
             </video>
             
             {/* Overlay Text */}
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent flex flex-col justify-end p-6 sm:p-8 lg:p-12">
-              <div className="max-w-3xl space-y-3 sm:space-y-4 text-background">
-                <p className="text-sm sm:text-base md:text-lg font-medium leading-relaxed">
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent flex flex-col justify-end p-3 sm:p-8 lg:p-12">
+              <div className="max-w-3xl space-y-1 sm:space-y-4 text-background">
+                <p className="text-[10px] leading-tight sm:text-base md:text-lg sm:font-medium leading-relaxed">
                   From Indonesian farms to global markets — we source, process, and deliver premium agricultural commodities with uncompromising quality.
                 </p>
-                <p className="text-xs sm:text-sm md:text-base text-background/80 leading-relaxed">
+                <p className="text-[9px] leading-tight sm:text-sm md:text-base sm:text-background/80 leading-relaxed">
                   Our state-of-the-art processing facilities ensure every shipment meets international standards for purity, grading, and safety.
                 </p>
-                <p className="text-xs sm:text-sm md:text-base text-background/80 leading-relaxed">
+                <p className="text-[9px] leading-tight sm:text-sm md:text-base sm:text-background/80 leading-relaxed">
                   With strategic partnerships across shipping lines and logistics networks, we manage the entire supply chain from farm to destination.
                 </p>
               </div>
