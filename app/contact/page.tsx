@@ -38,7 +38,7 @@ export default function ContactPage() {
                     name="fullName"
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl border border-border/50 bg-background text-foreground text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="John Doe"
+                    placeholder="Enter your name"
                   />
                 </div>
 
@@ -53,7 +53,7 @@ export default function ContactPage() {
                     name="email"
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl border border-border/50 bg-background text-foreground text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="john@example.com"
+                    placeholder="Enter your email address"
                   />
                 </div>
 
@@ -68,7 +68,7 @@ export default function ContactPage() {
                     name="phone"
                     required
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl border border-border/50 bg-background text-foreground text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                    placeholder="+62 812 3456 7890"
+                    placeholder="Enter your phone number (e.g. +62 812 3456 7890)"
                   />
                 </div>
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
                     required
                     maxLength={1500}
                     className="w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-2xl border border-border/50 bg-background text-foreground text-sm sm:text-base placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all resize-none"
-                    placeholder="Tell us about your needs, requirements, or any questions you have..."
+                    placeholder="Tell us about your needs, requirements, or any questions..."
                   />
                   <p className="text-xs text-muted-foreground mt-1">
                     <span id="wordCount">0</span> / 250 words
