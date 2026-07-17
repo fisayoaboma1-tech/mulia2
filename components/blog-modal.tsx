@@ -234,7 +234,7 @@ export function BlogModal({ isOpen, onClose }: BlogModalProps) {
               Insights, stories, and updates from PT Kanematsu Trading Indonesia on agricultural commodities, market trends, and sustainable practices.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
               {blogPosts.map((post) => (
                 <div
                   key={post.slug}
