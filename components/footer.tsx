@@ -11,8 +11,6 @@ const footerLinks = {
   entreprise: [
     { label: "Our story", href: "#" },
     { label: "Process", href: "#science" },
-    { label: "Team", href: "#" },
-    { label: "Careers", href: "#" },
   ],
   ressources: [
     { label: "Blog", href: "#" },
