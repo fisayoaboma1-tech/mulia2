@@ -10,17 +10,12 @@ export function HeroSection() {
   const imageContainerRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [videoError, setVideoError] = useState(false)
 
-  // Play video immediately when the video element is mounted, no useEffect delay
+  // Store video ref without attempting play - video isn't loaded yet
   const handleVideoRef = useCallback((video: HTMLVideoElement | null) => {
     if (video) {
       videoRef.current = video
-      // Attempt immediate play - no async wrapper to avoid microtask delay
-      video.play().catch((err) => {
-        if (err instanceof Error && err.name !== "AbortError") {
-          console.error("Video playback error:", err)
-        }
-      })
     }
   }, [])
 
@@ -28,11 +23,17 @@ export function HeroSection() {
     const video = videoRef.current
     if (video && video.paused) {
       video.play().catch((err) => {
+        // AbortError is expected if play() is interrupted by another play() call
         if (err instanceof Error && err.name !== "AbortError") {
           console.error("Video playback error:", err)
+          setVideoError(true)
         }
       })
     }
+  }, [])
+
+  const handleVideoError = useCallback(() => {
+    setVideoError(true)
   }, [])
 
   useEffect(() => {
@@ -91,6 +92,12 @@ export function HeroSection() {
           borderRadius: `${borderRadius}px`,
         }}
       >
+        {/* Background color visible while video loads */}
+        <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-foreground/80" />
+        {/* Fallback background when video fails to load */}
+        {videoError && (
+          <div className="absolute inset-0 bg-gradient-to-br from-foreground via-foreground/95 to-foreground/80 z-10" />
+        )}
         <video
           ref={handleVideoRef}
           autoPlay
@@ -99,8 +106,8 @@ export function HeroSection() {
           playsInline
           preload="auto"
           onCanPlay={handleVideoCanPlay}
-          poster="/images/hero-biometic.png"
-          className="w-full h-full object-cover"
+          onError={handleVideoError}
+          className={`absolute inset-0 w-full h-full object-cover ${videoError ? 'opacity-0' : 'opacity-100'}`}
           disableRemotePlayback
         >
           <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4" type="video/mp4" />
