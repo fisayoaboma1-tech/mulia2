@@ -10,9 +10,9 @@ import { ProductModal } from "@/components/product-modal"
 const products = [
   {
     slug: "premium-grains",
-    name: "Premium Grains",
-    description: "High-quality rice, corn, and wheat sourced directly from trusted Indonesian farms for domestic and international buyers.",
-    image: "/images/product-equilibrium.png",
+    name: "Premium Rice",
+    description: "High-quality aromatic and non-aromatic rice varieties including Basmati, Jasmine, and IR64, sourced from fertile Indonesian paddies.",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784298229/premium_grains_cv4wqy.jpg",
     tag: "Grains",
   },
   {
@@ -147,13 +147,23 @@ export function ProductSection() {
         product={selectedProduct ? {
           ...selectedProduct,
           slug: selectedProduct.slug,
-          details: `${selectedProduct.name} are premium agricultural commodities sourced directly from trusted Indonesian farms, processed and quality-checked to meet the highest international standards for global trade.`,
-          specifications: {
-            origin: "Indonesia",
-            quality: "Premium Grade",
-            packaging: "Customizable",
-            certification: "ISO 22000, HACCP",
-          },
+          details: selectedProduct.slug === "premium-grains"
+            ? "Our premium rice selection includes some of the finest varieties grown in Indonesia's fertile paddies. From the aromatic Basmati to the fragrant Jasmine rice and the versatile IR64, we ensure each grain meets international quality standards. Our rice is carefully harvested, processed, and packaged to preserve its natural aroma, texture, and nutritional value."
+            : `${selectedProduct.name} are premium agricultural commodities sourced directly from trusted Indonesian farms, processed and quality-checked to meet the highest international standards for global trade.`,
+          specifications: selectedProduct.slug === "premium-grains"
+            ? {
+                origin: "Indonesia",
+                varieties: "Basmati, Jasmine, IR64",
+                packaging: "25kg, 50kg, bulk",
+                "shelf Life": "12-24 months",
+                certification: "ISO 22000, HACCP",
+              }
+            : {
+                origin: "Indonesia",
+                quality: "Premium Grade",
+                packaging: "Customizable",
+                certification: "ISO 22000, HACCP",
+              },
         } : null}
         isOpen={!!selectedProduct}
         onClose={() => setSelectedProduct(null)}

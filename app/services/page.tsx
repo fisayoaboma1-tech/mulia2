@@ -10,23 +10,23 @@ const services = [
     description: "We partner directly with trusted Indonesian farms and cooperatives to source premium agricultural commodities at their peak quality.",
     details: "Our sourcing team travels across Indonesia to establish direct relationships with farmers and cooperatives. We prioritize sustainable farming practices and fair trade relationships, ensuring that our partners receive fair compensation while maintaining the highest quality standards.",
     icon: "🌾",
-    image: "/images/product-equilibrium.png",
-    video: false,
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784304909/sourcing_bducsa.mp4",
+    video: true,
   },
   {
     title: "Quality Assurance",
     description: "Each shipment undergoes rigorous inspection and testing to ensure it meets international standards for purity, grading, and safety.",
     details: "Our quality control process includes multiple inspection points, laboratory testing for contaminants, grading according to international standards, and certification documentation. We work with accredited laboratories to ensure compliance with import regulations in destination countries.",
     icon: "✓",
-    image: "/images/product-serenity.png",
-    video: true,
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784304895/qualityassurance_rwl8oh.jpg",
+    video: false,
   },
   {
     title: "Processing & Packaging",
     description: "State-of-the-art processing facilities ensure products meet specific buyer requirements for grade, size, and packaging.",
     details: "We operate modern processing facilities equipped with advanced sorting, cleaning, and packaging technology. Our flexible packaging solutions cater to diverse market requirements, from bulk shipments for industrial buyers to retail-ready packaging for consumer markets.",
     icon: "⚙️",
-    image: "/images/product-vitality.png",
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784305007/processing_wperwg.mp4",
     video: true,
   },
   {
@@ -34,15 +34,15 @@ const services = [
     description: "Our efficient supply chain and logistics network ensure timely delivery of agricultural commodities to buyers worldwide.",
     details: "With strategic partnerships across shipping lines, freight forwarders, and customs brokers, we manage the entire logistics chain from Indonesian ports to destinations across Asia, Europe, Middle East, and beyond. Our track record includes 98% on-time delivery performance.",
     icon: "🚢",
-    image: "/images/product-equilibrium.png",
-    video: false,
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784304894/globaldistribution_hkk7es.mp4",
+    video: true,
   },
   {
     title: "Documentation & Compliance",
     description: "Complete documentation and regulatory compliance for smooth international trade operations.",
     details: "We handle all necessary export documentation, phytosanitary certificates, certificates of origin, and compliance with international trade regulations. Our experienced team ensures seamless customs clearance and adherence to import requirements in destination markets.",
     icon: "📋",
-    image: "/images/product-serenity.png",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784304888/compliance_suzdz4.jpg",
     video: false,
   },
   {
@@ -50,7 +50,7 @@ const services = [
     description: "We provide our clients with valuable market insights, price trends, and commodity analysis to help them make informed purchasing decisions.",
     details: "Our team monitors global agricultural markets, weather patterns, and trade policies to provide timely intelligence that gives our partners a competitive advantage. We offer regular market reports, price forecasts, and customized analysis tailored to specific commodities and markets.",
     icon: "📊",
-    image: "/images/product-vitality.png",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784304889/marketintelligence_dzhpmn.webp",
     video: false,
   },
   {
@@ -58,23 +58,23 @@ const services = [
     description: "We work closely with clients to develop customized sourcing and supply chain solutions tailored to their specific requirements.",
     details: "Whether you need specific grades, packaging requirements, or delivery schedules, we adapt our services to meet your unique business needs. Our flexible approach allows us to handle both large-scale bulk orders and specialized small-batch requirements.",
     icon: "🎯",
-    image: "/images/product-equilibrium.png",
-    video: false,
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784304906/customsolution_lolb4o.mp4",
+    video: true,
   },
   {
     title: "Risk Management",
     description: "We help clients mitigate supply chain risks through diversified sourcing, quality guarantees, and contingency planning.",
     details: "Our risk management strategies ensure business continuity and protect our partners from market volatility and supply disruptions. We maintain multiple sourcing options, quality guarantees, and contingency plans to ensure uninterrupted supply.",
     icon: "🛡️",
-    image: "/images/product-serenity.png",
-    video: false,
+    image: "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784304907/riskmanage_szyljq.mp4",
+    video: true,
   },
   {
     title: "Training & Support",
     description: "We offer training programs and technical support to help our clients optimize their use of our products and services.",
     details: "From product application guidance to supply chain best practices, we invest in knowledge sharing to strengthen our partnerships. Our dedicated support team is always available to address questions, provide technical assistance, and ensure complete customer satisfaction.",
     icon: "🎓",
-    image: "/images/product-vitality.png",
+    image: "https://res.cloudinary.com/qz5m8bhg/image/upload/v1784304894/training_r9eqqr.jpg",
     video: false,
   },
 ]
@@ -108,35 +108,30 @@ export default function ServicesPage() {
               >
                 {/* Image or Video Placeholder */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-muted">
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  {service.video && (
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
-                        <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z" />
-                        </svg>
-                      </div>
-                    </div>
+                  {service.video ? (
+                    <video
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    >
+                      <source src={service.image} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
                   )}
-                  
                 </div>
 
                 {/* Content */}
                 <div className="p-4 sm:p-5 lg:p-8">
                   <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2 sm:mb-3">{service.title}</h3>
                   <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">{service.description}</p>
-                  <p className="text-xs sm:text-sm text-muted-foreground/80 leading-relaxed mb-4 sm:mb-6">{service.details}</p>
-                  <Button
-                    variant="ghost"
-                    className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto group/btn text-xs sm:text-sm"
-                  >
-                    Learn more
-                    <ArrowRight className="ml-1.5 sm:ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                  <p className="text-xs sm:text-sm text-muted-foreground/80 leading-relaxed">{service.details}</p>
                 </div>
               </div>
             ))}

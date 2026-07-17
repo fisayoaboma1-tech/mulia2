@@ -101,13 +101,25 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
         <div className="overflow-y-auto max-h-[90vh]">
           {/* Product Hero */}
           <div className="grid lg:grid-cols-2 gap-8 p-8">
-            {/* Image */}
+            {/* Image / Video */}
             <div className="relative aspect-[4/5] bg-card rounded-2xl overflow-hidden">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+              {product.image.endsWith(".mp4") ? (
+                <video
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src={product.image} type="video/mp4" />
+                </video>
+              ) : (
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover"
+                />
+              )}
               <span className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1.5 rounded-full">
                 {product.tag}
               </span>

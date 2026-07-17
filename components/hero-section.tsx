@@ -34,8 +34,20 @@ export function HeroSection() {
     const video = videoRef.current
     if (!video) return
 
-    video.src = videoSources[currentVideoIndex]
-    video.play()
+    const playVideo = async () => {
+      try {
+        video.src = videoSources[currentVideoIndex]
+        video.load()
+        await video.play()
+      } catch (err) {
+        // AbortError is expected when switching sources; ignore it
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Video playback error:", err)
+        }
+      }
+    }
+
+    playVideo()
   }, [currentVideoIndex])
 
   useEffect(() => {
@@ -73,6 +85,13 @@ export function HeroSection() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
+
   const scale = 1 - scrollProgress * 0.05
   const borderRadius = scrollProgress * 24
 
@@ -94,12 +113,7 @@ export function HeroSection() {
           playsInline
           poster="/images/hero-biometic.png"
           className="w-full h-full object-cover"
-        >
-          <source
-            src={videoSources[0]}
-            type="video/mp4"
-          />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/40 to-transparent" />
       </div>
 
@@ -125,6 +139,7 @@ export function HeroSection() {
           <div className="flex flex-col sm:flex-row mt-20 gap-3 sm:gap-4">
             <Button
               size="lg"
+              onClick={() => scrollToSection("produits")}
               className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full px-5 sm:px-8 md:px-10 py-4 sm:py-6 md:py-7 text-sm sm:text-base md:text-lg group w-full sm:w-auto"
             >
               Explore our products
@@ -133,6 +148,7 @@ export function HeroSection() {
             <Button
               size="lg"
               variant="outline"
+              onClick={() => scrollToSection("science")}
               className="rounded-full px-5 sm:px-8 md:px-10 py-4 sm:py-6 md:py-7 text-sm sm:text-base md:text-lg border-background/30 hover:bg-background/10 text-background bg-transparent backdrop-blur-sm w-full sm:w-auto"
             >
               Learn more

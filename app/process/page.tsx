@@ -117,19 +117,31 @@ export default function ProcessPage() {
             </p>
           </div>
 
-          {/* Video Placeholder */}
+          {/* Video with Overlay Text */}
           <div className="relative aspect-video bg-card rounded-3xl overflow-hidden border border-border/50 shadow-2xl shadow-primary/10">
-            <img
-              src="/images/mission-background.png"
-              alt="Video thumbnail"
-              className="w-full h-full object-cover opacity-80"
-            />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <button className="w-16 h-16 sm:w-20 sm:h-20 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/v1784305007/processing_wperwg.mp4" type="video/mp4" />
+            </video>
+            
+            {/* Overlay Text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground/90 via-foreground/50 to-transparent flex flex-col justify-end p-6 sm:p-8 lg:p-12">
+              <div className="max-w-3xl space-y-3 sm:space-y-4 text-background">
+                <p className="text-sm sm:text-base md:text-lg font-medium leading-relaxed">
+                  From Indonesian farms to global markets — we source, process, and deliver premium agricultural commodities with uncompromising quality.
+                </p>
+                <p className="text-xs sm:text-sm md:text-base text-background/80 leading-relaxed">
+                  Our state-of-the-art processing facilities ensure every shipment meets international standards for purity, grading, and safety.
+                </p>
+                <p className="text-xs sm:text-sm md:text-base text-background/80 leading-relaxed">
+                  With strategic partnerships across shipping lines and logistics networks, we manage the entire supply chain from farm to destination.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -152,143 +164,57 @@ export default function ProcessPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-equilibrium.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_5_fjb6aw.jpg"
                 alt="Processing facility"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Processing Facilities</h3>
-                <p className="text-xs sm:text-sm text-background/90">Modern equipment for sorting, cleaning, and packaging</p>
-              </div>
             </div>
 
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-serenity.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_1_ssnsrd.jpg"
                 alt="Quality control lab"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Quality Control Labs</h3>
-                <p className="text-xs sm:text-sm text-background/90">Accredited laboratories for testing and certification</p>
-              </div>
             </div>
 
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-vitality.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_4_wpvaub.jpg"
                 alt="Warehouse and logistics"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Warehouse & Logistics</h3>
-                <p className="text-xs sm:text-sm text-background/90">Strategic storage and distribution centers</p>
-              </div>
             </div>
 
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-equilibrium.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_2_bqizj4.jpg"
                 alt="Farm partnerships"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Farm Partnerships</h3>
-                <p className="text-xs sm:text-sm text-background/90">Direct relationships with 50+ partner farms</p>
-              </div>
             </div>
 
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-serenity.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306136/1_3_g5ehw4.jpg"
                 alt="Shipping and export"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Export Operations</h3>
-                <p className="text-xs sm:text-sm text-background/90">Port operations and international shipping</p>
-              </div>
             </div>
 
-            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 group">
+            <div className="relative aspect-[4/3] bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5">
               <img
-                src="/images/product-vitality.png"
+                src="https://res.cloudinary.com/qz5m8bhg/image/upload/v1784306135/1_1_pbjyvo.webp"
                 alt="Sustainable farming"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                <h3 className="font-serif text-base sm:text-xl text-background mb-1 sm:mb-2">Sustainable Practices</h3>
-                <p className="text-xs sm:text-sm text-background/90">Eco-friendly farming and processing methods</p>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Additional Process Steps */}
-      <section className="py-16 sm:py-24 lg:py-32 bg-primary text-primary-foreground">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-primary-foreground/70 font-medium mb-4">
-              Additional Services
-            </p>
-            <ScrollBlurText
-              text="Comprehensive support"
-              className="font-serif text-2xl sm:text-3xl text-primary-foreground text-balance mb-6 md:text-7xl font-light"
-            />
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
-            <div className="border-t border-primary-foreground/20 pt-6 sm:pt-8">
-              <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-primary-foreground mb-3 sm:mb-4">Market Intelligence</h3>
-              <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed mb-3 sm:mb-4">
-                We provide our clients with valuable market insights, price trends, and commodity analysis to help them make informed purchasing decisions.
-              </p>
-              <p className="text-xs sm:text-sm text-primary-foreground/60 leading-relaxed">
-                Our team monitors global agricultural markets, weather patterns, and trade policies to provide timely intelligence that gives our partners a competitive advantage.
-              </p>
-            </div>
-
-            <div className="border-t border-primary-foreground/20 pt-6 sm:pt-8">
-              <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-primary-foreground mb-3 sm:mb-4">Custom Solutions</h3>
-              <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed mb-3 sm:mb-4">
-                We work closely with clients to develop customized sourcing and supply chain solutions tailored to their specific requirements.
-              </p>
-              <p className="text-xs sm:text-sm text-primary-foreground/60 leading-relaxed">
-                Whether you need specific grades, packaging requirements, or delivery schedules, we adapt our services to meet your unique business needs.
-              </p>
-            </div>
-
-            <div className="border-t border-primary-foreground/20 pt-6 sm:pt-8">
-              <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-primary-foreground mb-3 sm:mb-4">Risk Management</h3>
-              <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed mb-3 sm:mb-4">
-                We help clients mitigate supply chain risks through diversified sourcing, quality guarantees, and contingency planning.
-              </p>
-              <p className="text-xs sm:text-sm text-primary-foreground/60 leading-relaxed">
-                Our risk management strategies ensure business continuity and protect our partners from market volatility and supply disruptions.
-              </p>
-            </div>
-
-            <div className="border-t border-primary-foreground/20 pt-6 sm:pt-8">
-              <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-primary-foreground mb-3 sm:mb-4">Training & Support</h3>
-              <p className="text-sm sm:text-base text-primary-foreground/70 leading-relaxed mb-3 sm:mb-4">
-                We offer training programs and technical support to help our clients optimize their use of our products and services.
-              </p>
-              <p className="text-xs sm:text-sm text-primary-foreground/60 leading-relaxed">
-                From product application guidance to supply chain best practices, we invest in knowledge sharing to strengthen our partnerships.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
       <Footer />
     </main>
   )

@@ -7,6 +7,7 @@ import Link from "next/link"
 
 export function MissionSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -29,9 +30,21 @@ export function MissionSection() {
   return (
     <section ref={sectionRef} id="mission" className="py-24 lg:py-32 px-6">
       <div className="relative max-w-7xl mx-auto rounded-[48px] overflow-hidden">
-        {/* Background Image */}
+        {/* Background Video */}
         <div className="absolute inset-0">
-          <img src="/images/mission-background.png" alt="Nature background" className="w-full h-full object-cover" />
+          <video
+            ref={videoRef}
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source
+              src="https://res.cloudinary.com/qz5m8bhg/video/upload/v1784296549/WhatsApp_Video_2026-07-17_at_2.54.45_PM_rmiztx.mp4"
+              type="video/mp4"
+            />
+          </video>
           {/* Dark overlay for text readability */}
           <div className="absolute inset-0 bg-foreground/50" />
 
