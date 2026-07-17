@@ -83,24 +83,24 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-background pt-15">
       <Header />
-      <section className="py-24 lg:py-32">
+      <section className="py-16 sm:py-24 lg:py-32">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-16 lg:mb-20">
-            <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
+          <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
               Our Services
             </p>
             <ScrollBlurText
               text="Comprehensive agricultural trading solutions"
-              className="font-serif text-3xl text-foreground text-balance mb-6 md:text-7xl font-light"
+              className="font-serif text-2xl sm:text-3xl text-foreground text-balance mb-6 md:text-7xl font-light"
             />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               From farm to global market, we offer end-to-end services designed to meet the diverse needs of our international clients.
             </p>
           </div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -115,8 +115,8 @@ export default function ServicesPage() {
                   />
                   {service.video && (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
-                        <svg className="w-6 h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-2xl">
+                        <svg className="w-5 h-5 sm:w-6 sm:h-6 ml-1" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M8 5v14l11-7z" />
                         </svg>
                       </div>
@@ -126,16 +126,16 @@ export default function ServicesPage() {
                 </div>
 
                 {/* Content */}
-                <div className="p-6 lg:p-8">
-                  <h3 className="font-serif text-2xl font-medium text-foreground mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">{service.description}</p>
-                  <p className="text-sm text-muted-foreground/80 leading-relaxed mb-6">{service.details}</p>
+                <div className="p-4 sm:p-5 lg:p-8">
+                  <h3 className="font-serif text-lg sm:text-xl md:text-2xl font-medium text-foreground mb-2 sm:mb-3">{service.title}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4">{service.description}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground/80 leading-relaxed mb-4 sm:mb-6">{service.details}</p>
                   <Button
                     variant="ghost"
-                    className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto group/btn"
+                    className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto group/btn text-xs sm:text-sm"
                   >
                     Learn more
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-1.5 sm:ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
                   </Button>
                 </div>
               </div>
