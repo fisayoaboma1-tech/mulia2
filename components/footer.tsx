@@ -40,10 +40,10 @@ export function Footer() {
                 <span>info@kanematsu-trading.com</span>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="w-4 h-4 mt-0.5 shrink-0" />
-                <div className="flex flex-col">
-                  <span>+62-031 8521230</span>
-                  <span>+62 816-868-92024</span>
+                <Phone className="w-4 h-4 mt-1 shrink-0" />
+                <div className="flex flex-col gap-2">
+                  <a href="tel:+62318521230" className="hover:text-background transition-colors">+62-031 8521230</a>
+                  <a href="tel:+6281686892024" className="hover:text-background transition-colors">+62 816-868-92024</a>
                 </div>
               </div>
               <div className="flex items-start gap-3">
