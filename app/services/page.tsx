@@ -122,9 +122,7 @@ export default function ServicesPage() {
                       </div>
                     </div>
                   )}
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-background/90 backdrop-blur-sm rounded-full flex items-center justify-center text-2xl">
-                    {service.icon}
-                  </div>
+                  
                 </div>
 
                 {/* Content */}
