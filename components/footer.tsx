@@ -29,7 +29,7 @@ export function Footer() {
               <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center">
                 <span className="text-foreground font-serif text-sm font-medium">K</span>
               </div>
-              <span className="font-serif text-xl font-medium text-background">PT Kanematsu Trading</span>
+              <span className="font-serif text-xl font-medium text-background">PT Kanematsu Trading Indonesia</span>
             </Link>
             <p className="text-background/70 leading-relaxed mb-6 max-w-sm">
               Agricultural trading and supply company connecting Indonesian producers with global markets through reliable sourcing, strict quality control, and efficient logistics.
@@ -46,9 +46,12 @@ export function Footer() {
                   <span>+62 816-868-92024</span>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4" />
-                <span>Jakarta, Indonesia</span>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 mt-0.5 shrink-0" />
+                <div className="flex flex-col">
+                  <span>Atria Sudirman Building, 15th Floor</span>
+                  <span>Jl. Jend. Sudirman Kav. 33A, Central Jakarta</span>
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +99,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-background/50">© 2026 PT Kanematsu Trading. All rights reserved.</p>
+          <p className="text-sm text-background/50">© 2026 PT Kanematsu Trading Indonesia. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-background/50">
             <Link href="#" className="hover:text-background transition-colors">
               Legal notice
