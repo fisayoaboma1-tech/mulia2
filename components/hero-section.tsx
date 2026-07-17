@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import { AnimatedText } from "@/components/animated-text"
@@ -11,21 +11,28 @@ export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
 
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const playVideo = async () => {
-      try {
-        await video.play()
-      } catch (err) {
+  // Play video immediately when the video element is mounted, no useEffect delay
+  const handleVideoRef = useCallback((video: HTMLVideoElement | null) => {
+    if (video) {
+      videoRef.current = video
+      // Attempt immediate play - no async wrapper to avoid microtask delay
+      video.play().catch((err) => {
         if (err instanceof Error && err.name !== "AbortError") {
           console.error("Video playback error:", err)
         }
-      }
+      })
     }
+  }, [])
 
-    playVideo()
+  const handleVideoCanPlay = useCallback(() => {
+    const video = videoRef.current
+    if (video && video.paused) {
+      video.play().catch((err) => {
+        if (err instanceof Error && err.name !== "AbortError") {
+          console.error("Video playback error:", err)
+        }
+      })
+    }
   }, [])
 
   useEffect(() => {
@@ -85,12 +92,13 @@ export function HeroSection() {
         }}
       >
         <video
-          ref={videoRef}
+          ref={handleVideoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
+          onCanPlay={handleVideoCanPlay}
           poster="/images/hero-biometic.png"
           className="w-full h-full object-cover"
           disableRemotePlayback
