@@ -1,43 +1,50 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { ScrollBlurText } from "@/components/scroll-blur-text"
+import { ProductModal } from "@/components/product-modal"
 
 const products = [
   {
+    slug: "premium-grains",
     name: "Premium Grains",
     description: "High-quality rice, corn, and wheat sourced directly from trusted Indonesian farms for domestic and international buyers.",
     image: "/images/product-equilibrium.png",
     tag: "Grains",
   },
   {
+    slug: "spices-herbs",
     name: "Spices & Herbs",
     description: "Premium-grade spices including pepper, nutmeg, cinnamon, and vanilla, processed and packaged for global export.",
     image: "/images/product-serenity.png",
     tag: "Spices",
   },
   {
+    slug: "coffee-cocoa",
     name: "Coffee & Cocoa",
     description: "Specialty coffee beans and premium cocoa sourced from sustainable plantations with strict quality control.",
     image: "/images/product-vitality.png",
     tag: "Beverage Crops",
   },
   {
+    slug: "palm-oil",
     name: "Palm Oil",
     description: "Refined and crude palm oil sourced from sustainable plantations, meeting international food industry standards.",
     image: "/images/product-equilibrium.png",
     tag: "Oils",
   },
   {
+    slug: "rubber",
     name: "Rubber",
     description: "Natural rubber products including SIR20 and SIR3CV grades, processed to meet global manufacturing specifications.",
     image: "/images/product-serenity.png",
     tag: "Industrial",
   },
   {
+    slug: "cashew-nuts",
     name: "Cashew Nuts",
     description: "Premium cashew nuts sourced from Indonesian plantations, available in various grades for food processing and retail.",
     image: "/images/product-vitality.png",
@@ -47,6 +54,7 @@ const products = [
 
 export function ProductSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [selectedProduct, setSelectedProduct] = useState<typeof products[0] | null>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -89,7 +97,10 @@ export function ProductSection() {
               key={product.name}
               className={`reveal opacity-0 ${index === 1 ? "animation-delay-200" : index === 2 ? "animation-delay-400" : ""} group min-w-[65vw] md:min-w-[70vw] lg:min-w-0 snap-center`}
             >
-              <div className="bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500">
+              <div
+                className="bg-card rounded-3xl overflow-hidden border border-border/50 shadow-lg shadow-primary/5 hover:shadow-xl hover:shadow-primary/10 transition-all duration-500 cursor-pointer"
+                onClick={() => setSelectedProduct(product)}
+              >
                 {/* Image */}
                 <div className="relative aspect-[4/5] overflow-hidden bg-muted z-10">
                   <img
@@ -98,21 +109,18 @@ export function ProductSection() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   {/* End of Progressive blur effect from bottom */}
-                  <span className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1.5 rounded-full z-10">
+                  <span className="absolute top-2 left-2 sm:top-3 sm:left-3 lg:top-4 lg:left-4 bg-background/90 backdrop-blur-sm text-foreground text-[10px] sm:text-xs font-medium px-2 py-1 sm:px-3 sm:py-1.5 rounded-full z-10">
                     {product.tag}
                   </span>
                 </div>
                 {/* Content */}
-                <div className="p-6 lg:p-8">
-                  <h3 className="font-serif text-foreground mb-3 text-3xl font-normal">{product.name}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-6">{product.description}</p>
-                  <Button
-                    variant="ghost"
-                    className="text-primary hover:text-primary hover:bg-primary/10 p-0 h-auto group/btn"
-                  >
+                <div className="p-3 sm:p-4 lg:p-8">
+                  <h3 className="font-serif text-foreground mb-1 sm:mb-2 lg:mb-3 text-sm sm:text-base lg:text-3xl font-normal leading-tight">{product.name}</h3>
+                  <p className="text-muted-foreground leading-snug mb-2 sm:mb-3 lg:mb-6 text-xs sm:text-sm lg:text-base line-clamp-2 sm:line-clamp-3 lg:line-clamp-none">{product.description}</p>
+                  <span className="inline-flex items-center text-primary hover:text-primary/80 text-xs sm:text-sm font-medium group/btn">
                     Discover
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-                  </Button>
+                    <ArrowRight className="ml-1 sm:ml-2 w-3 h-3 sm:w-4 sm:h-4 group-hover/btn:translate-x-1 transition-transform" />
+                  </span>
                 </div>
               </div>
             </div>
@@ -133,6 +141,23 @@ export function ProductSection() {
           </Button>
         </div>
       </div>
+
+      {/* Product Modal */}
+      <ProductModal
+        product={selectedProduct ? {
+          ...selectedProduct,
+          slug: selectedProduct.slug,
+          details: `${selectedProduct.name} are premium agricultural commodities sourced directly from trusted Indonesian farms, processed and quality-checked to meet the highest international standards for global trade.`,
+          specifications: {
+            origin: "Indonesia",
+            quality: "Premium Grade",
+            packaging: "Customizable",
+            certification: "ISO 22000, HACCP",
+          },
+        } : null}
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+      />
     </section>
   )
 }
