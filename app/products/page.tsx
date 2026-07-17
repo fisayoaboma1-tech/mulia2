@@ -711,18 +711,18 @@ export default function ProductsPage() {
   return (
     <main className="min-h-screen bg-background pt-15">
       <Header />
-      <section className="py-24 lg:py-32 bg-muted/30">
+      <section className="py-16 sm:py-24 lg:py-32 bg-muted/30">
         <div className="max-w-[1920px] mx-auto px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12 lg:mb-16">
-            <p className="text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
+          <div className="text-center mb-10 sm:mb-12 lg:mb-16">
+            <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-secondary font-medium mb-4">
               Our Products
             </p>
             <ScrollBlurText
               text="Premium agricultural commodities"
-              className="font-serif text-3xl text-foreground text-balance mb-6 md:text-7xl font-light"
+              className="font-serif text-2xl sm:text-3xl text-foreground text-balance mb-6 md:text-7xl font-light"
             />
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Each product is carefully sourced, processed, and quality-checked to meet the highest international standards for global trade.
             </p>
           </div>
