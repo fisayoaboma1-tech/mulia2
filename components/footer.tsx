@@ -97,7 +97,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-background/50">© 2025 PT Kanematsu Trading. All rights reserved.</p>
+          <p className="text-sm text-background/50">© 2026 PT Kanematsu Trading. All rights reserved.</p>
           <div className="flex gap-6 text-sm text-background/50">
             <Link href="#" className="hover:text-background transition-colors">
               Legal notice
