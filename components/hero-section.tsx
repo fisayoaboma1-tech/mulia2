@@ -8,7 +8,35 @@ import { AnimatedText } from "@/components/animated-text"
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const imageContainerRef = useRef<HTMLDivElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
+
+  const videoSources = [
+    "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4",
+    "https://res.cloudinary.com/qz5m8bhg/video/upload/v1784293864/From_Klickpin.com-_Try_Cozy_curly_hair_care_ideas_that_are_packed_with_ideas_people_keep_saving_and_clicking_on_lately_for_ideas_worth_saving_righ_vabwrk.mp4",
+  ]
+  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const handleVideoEnded = () => {
+      const nextIndex = (currentVideoIndex + 1) % videoSources.length
+      setCurrentVideoIndex(nextIndex)
+    }
+
+    video.addEventListener("ended", handleVideoEnded)
+    return () => video.removeEventListener("ended", handleVideoEnded)
+  }, [currentVideoIndex])
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    video.src = videoSources[currentVideoIndex]
+    video.play()
+  }, [currentVideoIndex])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -50,7 +78,7 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative min-h-[85vh] md:min-h-screen flex items-center overflow-hidden pt-16 md:pt-20">
-      {/* Full-width background image with zoom effect */}
+      {/* Full-width background video with zoom effect */}
       <div
         ref={imageContainerRef}
         className="absolute inset-0 w-full h-full overflow-hidden transition-transform duration-100"
@@ -59,11 +87,19 @@ export function HeroSection() {
           borderRadius: `${borderRadius}px`,
         }}
       >
-        <img
-          src="/images/hero-biometic.png"
-          alt="Agricultural landscape"
-          className="w-full h-full object-cover animate-zoom-in"
-        />
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          playsInline
+          poster="/images/hero-biometic.png"
+          className="w-full h-full object-cover"
+        >
+          <source
+            src={videoSources[0]}
+            type="video/mp4"
+          />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/40 to-transparent" />
       </div>
 
