@@ -11,36 +11,14 @@ export function HeroSection() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
 
-  const videoSources = [
-    "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4",
-    "https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293864/From_Klickpin.com-_Try_Cozy_curly_hair_care_ideas_that_are_packed_with_ideas_people_keep_saving_and_clicking_on_lately_for_ideas_worth_saving_righ_vabwrk.mp4",
-  ]
-  const [currentVideoIndex, setCurrentVideoIndex] = useState(0)
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-
-    const handleVideoEnded = () => {
-      const nextIndex = (currentVideoIndex + 1) % videoSources.length
-      setCurrentVideoIndex(nextIndex)
-    }
-
-    video.addEventListener("ended", handleVideoEnded)
-    return () => video.removeEventListener("ended", handleVideoEnded)
-  }, [currentVideoIndex])
-
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
 
     const playVideo = async () => {
       try {
-        video.src = videoSources[currentVideoIndex]
-        video.load()
         await video.play()
       } catch (err) {
-        // AbortError is expected when switching sources; ignore it
         if (err instanceof Error && err.name !== "AbortError") {
           console.error("Video playback error:", err)
         }
@@ -48,7 +26,7 @@ export function HeroSection() {
     }
 
     playVideo()
-  }, [currentVideoIndex])
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -110,10 +88,15 @@ export function HeroSection() {
           ref={videoRef}
           autoPlay
           muted
+          loop
           playsInline
+          preload="auto"
           poster="/images/hero-biometic.png"
           className="w-full h-full object-cover"
-        />
+          disableRemotePlayback
+        >
+          <source src="https://res.cloudinary.com/qz5m8bhg/video/upload/f_auto,q_auto/v1784293662/From_Klickpin.com-_Nail_design_inspiration_that_are_worth_saving_if_you_love_elegant_details_and_creative_inspiration_for_people_who_want_stylish_h7g3t3.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-foreground/60 via-foreground/40 to-transparent" />
       </div>
 

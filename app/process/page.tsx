@@ -168,6 +168,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_5_fjb6aw.jpg"
                 alt="Processing facility"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -176,6 +177,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_1_ssnsrd.jpg"
                 alt="Quality control lab"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -184,6 +186,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_4_wpvaub.jpg"
                 alt="Warehouse and logistics"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -192,6 +195,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_2_bqizj4.jpg"
                 alt="Farm partnerships"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -200,6 +204,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306136/1_3_g5ehw4.jpg"
                 alt="Shipping and export"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -208,6 +213,7 @@ export default function ProcessPage() {
               <img
                 src="https://res.cloudinary.com/qz5m8bhg/image/upload/f_auto,q_auto/v1784306135/1_1_pbjyvo.webp"
                 alt="Sustainable farming"
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
             </div>
