@@ -36,8 +36,8 @@ export function Footer() {
             </p>
             <div className="space-y-3 text-sm text-background/70">
               <div className="flex items-center gap-3">
-                <Mail className="w-4 h-4" />
-                <span>info@kanematsu-trading.com</span>
+                <Mail className="w-4 h-4 shrink-0" />
+                <a href="mailto:info@kanematsu-trading.com" className="hover:text-background transition-colors">info@kanematsu-trading.com</a>
               </div>
               <div className="flex items-start gap-3">
                 <Phone className="w-4 h-4 mt-1 shrink-0" />
